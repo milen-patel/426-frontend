@@ -1,5 +1,8 @@
 import React, { Component } from "react"; //different
 import { Route, Switch } from "react-router-dom";
+import "./components/Register";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 class App extends Component {
   render() {
@@ -9,10 +12,13 @@ class App extends Component {
           <p>Homepage</p>
         </Route>
         <Route path="/426-frontend/login">
-          <p>Login</p>
+          <Login />
         </Route>
         <Route path="/426-frontend/register">
-          <p>Register</p>
+          <Register />
+        </Route>
+        <Route path="/426-frontend/portal">
+          <p>Authenticated Page</p>
         </Route>
       </Switch>
     );
