@@ -5,13 +5,22 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import AccountInfoView from "./components/AccountInfoView";
 import Dashboard from "./components/Dashboard";
+import { useHistory } from "react-router"
 
-class App extends Component {
-  render() {
+
+function App() {
+  let history = useHistory();
     return (
       <Switch>
         <Route exact path="/426-frontend/">
           <p>Homepage</p>
+          <Login />
+          <button onClick={() => {
+            history.push("/426-frontend/login")
+          }}>Move to Login</button>
+          <button onClick={() => {
+            history.push("/426-frontend/register")
+          }}>Move to Register</button>
         </Route>
         <Route path="/426-frontend/login">
           <Login />
@@ -27,7 +36,6 @@ class App extends Component {
         </Route>
       </Switch>
     );
-  }
 }
 
 export default App;

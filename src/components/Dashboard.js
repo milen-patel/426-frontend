@@ -155,7 +155,7 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-        <p>welcome</p>
+     /w   <p>welcome</p>
         <p>
           <strong>Balance:</strong>
           {this.state.balance}
