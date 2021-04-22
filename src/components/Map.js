@@ -3,32 +3,108 @@ import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
 
-function Map(props) {
+class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldShowWalkOffer: false,
+    };
+  }
+
+  clickedMap = (e) => {
+    const walkCost = this.distanceInmBetweenEarthCoordinates(
+      this.props.userLat,
+      this.props.userLon,
+      e.lat,
+      e.lng
+    );
+    this.setState(() => ({
+      walkLat: e.lat,
+      walkLon: e.lng,
+      walkCost: walkCost,
+      shouldShowWalkOffer: true,
+    }));
+  };
+
+  render() {
+    let walkOffer;
+    if (this.state.shouldShowWalkOffer) {
+      walkOffer = (
+        <div>
+          Lat: {this.state.walkLat}
+          <br />
+          Lon: {this.state.walkLon}
+          <br />
+          Cost: {this.state.walkCost}
+          <br />
+          {this.props.userBalance > this.state.walkCost ? (
+            <button
+              type="button"
+              onClick={() => {
+                this.props.moveHandler(this.state.walkLat, this.state.walkLon);
+              }}
+            >
+              Move
+            </button>
+          ) : (
+            <button type="button">Insufficient Funds</button>
+          )}
+        </div>
+      );
+    }
+
     let propertyVisuals;
-    if (props.properties) {
-        propertyVisuals = props.properties.map(e => PropertyOnMap(e));
+    if (this.props.properties) {
+      propertyVisuals = this.props.properties.map((e) => PropertyOnMap(e));
     }
     console.log(9);
-    
+
     return (
-          <div style={{ width: "500px", height: "500px" }}>
-            <GoogleMapReact
-              onChange={(e) => console.log(e)}
-              bootstrapURLKeys={{
-                key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-                language: "en",
-                region: "US",
-              }}
-              center={{ lat: props.userLat, lng: props.userLon }}
-              defaultZoom={15}
-            >
-                {propertyVisuals}
-                <UserOnMap lat={props.userLat} lng={props.userLon} name={"Me"} />
-            </GoogleMapReact>
-          </div>
-
+      <div>
+        {walkOffer}
+        <div style={{ width: "500px", height: "500px" }}>
+          <GoogleMapReact
+            onChange={(e) => console.log(e)}
+            bootstrapURLKeys={{
+              key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+              language: "en",
+              region: "US",
+            }}
+            center={{ lat: this.props.userLat, lng: this.props.userLon }}
+            defaultZoom={15}
+            onClick={this.clickedMap}
+          >
+            {propertyVisuals}
+            <UserOnMap
+              lat={this.props.userLat}
+              lng={this.props.userLon}
+              name={"Me"}
+            />
+          </GoogleMapReact>
+        </div>
+      </div>
     );
+  }
 
+  degreesToRadians = (degrees) => {
+    return (degrees * Math.PI) / 180;
+  };
+
+  distanceInmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
+    var earthRadiusKm = 6371;
+
+    var dLat = this.degreesToRadians(lat2 - lat1);
+    var dLon = this.degreesToRadians(lon2 - lon1);
+
+    lat1 = this.degreesToRadians(lat1);
+    lat2 = this.degreesToRadians(lat2);
+
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return 1000 * earthRadiusKm * c;
+  }
 }
 
 export default Map;

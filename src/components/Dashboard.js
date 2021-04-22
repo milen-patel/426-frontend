@@ -54,22 +54,7 @@ class Dashboard extends React.Component {
     return true;
   };
 
-  clickedMap = (e) => {
-    const walkCost = this.distanceInmBetweenEarthCoordinates(
-      this.state.lat,
-      this.state.lon,
-      e.lat,
-      e.lng
-    );
-    this.setState(() => ({
-      walkLat: e.lat,
-      walkLon: e.lng,
-      walkCost: walkCost,
-      shouldShowWalkOffer: true,
-    }));
-  };
-
-  makeMove = async () => {
+  makeMove = async (walkLat, walkLon) => {
     const res = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/user/move",
@@ -77,11 +62,11 @@ class Dashboard extends React.Component {
         "auth-token": token.val,
       },
       data: {
-        lat: this.state.walkLat,
-        lon: this.state.walkLon,
+        lat: walkLat,
+        lon: walkLon,
       },
     });
-
+    console.log('made it here');
     const localProperties = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/nearbyProperties",
@@ -89,18 +74,20 @@ class Dashboard extends React.Component {
         "auth-token": token.val,
       },
       data: {
-        lat: res.data.data.lat,
-        lon: res.data.data.lon,
+        lat: walkLat,
+        lon: walkLon,
         range: 500,
       },
     });
+
+    console.log("Nearby properies:");
+    console.log(localProperties);
 
     this.setState(() => ({
       balance: res.data.data.balance,
       lat: res.data.data.lat,
       lon: res.data.data.lon,
       propertiesToShow: localProperties.data,
-      shouldShowWalkOffer: false,
     }));
   };
 
@@ -118,26 +105,6 @@ class Dashboard extends React.Component {
       });
     }
 
-    let walkOffer;
-    if (this.state.shouldShowWalkOffer) {
-      walkOffer = (
-        <div>
-          Lat: {this.state.walkLat}
-          <br />
-          Lon: {this.state.walkLon}
-          <br />
-          Cost: {this.state.walkCost}
-          <br />
-          {this.state.balance > this.state.walkCost ? (
-            <button type="button" onClick={this.makeMove}>
-              Move
-            </button>
-          ) : (
-            <button type="button">Insufficient Funds</button>
-          )}
-        </div>
-      );
-    }
     return (
       <div>
         <p>welcome</p>
@@ -145,9 +112,13 @@ class Dashboard extends React.Component {
           <strong>Balance:</strong>
           {this.state.balance}
         </p>
-        {walkOffer}
-        <walkOffer />
-        <Map userLat={this.state.lat} userLon={this.state.lon} properties={this.state.propertiesToShow} />
+        <Map
+          userLat={this.state.lat}
+          userLon={this.state.lon}
+          properties={this.state.propertiesToShow}
+          userBalance={this.state.balance}
+          moveHandler={this.makeMove.bind(this)}
+        />
         <div>
           <hr />
           {nearbyPropertiesList}
@@ -155,7 +126,6 @@ class Dashboard extends React.Component {
       </div>
     );
   }
-
 
   propertyListEntry = (props) => {
     return (
@@ -169,30 +139,6 @@ class Dashboard extends React.Component {
       </div>
     );
   };
-
-  walkOffer = (props) => {
-    return <div>TODO</div>;
-  };
-
-  degreesToRadians = (degrees) => {
-    return (degrees * Math.PI) / 180;
-  };
-
-  distanceInmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
-    var earthRadiusKm = 6371;
-
-    var dLat = this.degreesToRadians(lat2 - lat1);
-    var dLon = this.degreesToRadians(lon2 - lon1);
-
-    lat1 = this.degreesToRadians(lat1);
-    lat2 = this.degreesToRadians(lat2);
-
-    var a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return 1000 * earthRadiusKm * c;
-  }
 }
 
 export default Dashboard;
