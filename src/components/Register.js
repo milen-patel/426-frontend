@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import {token} from "../token";
 
 class Register extends React.Component {
   constructor() {
@@ -34,7 +33,7 @@ class Register extends React.Component {
   onRegister = async () => {
     //CASEY validate input
     try {
-      let res = await axios({
+      await axios({
         method: "post",
         url: "https://backend-426.herokuapp.com/api/users/register",
         headers: {
@@ -46,10 +45,9 @@ class Register extends React.Component {
           password: this.state.passField,
         },
       });
-      token.val = res.data.data.id;
-      window.location.href='/426-frontend/login';
+      window.location.href = "/426-frontend/login";
     } catch (err) {
-      this.setState(() => ({status: err.toString()}));
+      this.setState(() => ({ status: err.toString() }));
     }
   };
 

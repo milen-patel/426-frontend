@@ -1,23 +1,17 @@
 import axios from "axios";
 import React from "react";
-import {token} from "../token";
+import { token } from "../token";
+import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      nameField: "",
       passField: "",
       emailField: "",
       status: "",
     };
   }
-
-  nameFieldChanged = (e) => {
-    this.setState(() => ({
-      nameField: e.target.value,
-    }));
-  };
 
   emailFieldChanged = (e) => {
     this.setState(() => ({
@@ -31,25 +25,27 @@ class Login extends React.Component {
     }));
   };
 
-  onRegister = async () => {
+  onLogin = async () => {
+    //MILEN fix double login broken bug
     //CASEY validate input
     try {
       let res = await axios({
         method: "post",
-        url: "https://backend-426.herokuapp.com/api/users/register",
+        url: "https://backend-426.herokuapp.com/api/users/login",
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
         data: {
-          name: this.state.nameField,
           email: this.state.emailField,
           password: this.state.passField,
         },
       });
-      token.val = res.data.data.id;
-      window.location.href='/login';
+      token.val = res.data.data.token;
+      this.setState(() => ({
+        status: <Redirect to="/426-frontend/dashboard"></Redirect>,
+      }));
     } catch (err) {
-      this.setState(() => ({status: err.toString()}));
+      this.setState(() => ({ status: err.toString() }));
     }
   };
 
@@ -59,18 +55,15 @@ class Login extends React.Component {
       <div>
         {this.state.status}
         {this.state.status ? <br /> : ""}
-        Name:
-        <input type="text" onChange={this.nameFieldChanged}></input>
-        <br />
         Email:
         <input type="text" onChange={this.emailFieldChanged}></input>
         <br />
         Password:
         <input type="password" onChange={this.passwordFieldChanged}></input>
         <br />
-        Register:
-        <button type="button" onClick={this.onRegister}>
-          Register
+        Login:
+        <button type="button" onClick={this.onLogin}>
+          Login
         </button>
       </div>
     );
