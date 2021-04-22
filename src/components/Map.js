@@ -55,16 +55,14 @@ class Map extends React.Component {
 
     let propertyVisuals;
     if (this.props.properties) {
-      propertyVisuals = this.props.properties.map((e) => PropertyOnMap(e));
+      propertyVisuals = this.props.properties.map((e) => <PropertyOnMap location={e.location} name={e.name} lat={e.location[0]} lng={e.location[1]}/>);
     }
-    console.log(9);
 
     return (
       <div>
         {walkOffer}
         <div style={{ width: "500px", height: "500px" }}>
           <GoogleMapReact
-            onChange={(e) => console.log(e)}
             bootstrapURLKeys={{
               key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
               language: "en",

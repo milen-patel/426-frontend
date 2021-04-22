@@ -1,6 +1,6 @@
   let PropertyOnMap = (props) => {
     return (
-      <div lat={props.location[0]} lng={props.location[1]}>
+      <div key ={props.name}>
         <button>{props.name}</button>
       </div>
     );
