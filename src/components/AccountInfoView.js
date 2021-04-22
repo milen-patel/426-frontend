@@ -10,6 +10,10 @@ class AccountInfoView extends React.Component {
   }
 
   async componentDidMount() {
+    if (!token.val) {
+      return;
+    }
+
     const res = await axios({
       method: "get",
       url: "https://backend-426.herokuapp.com/api/user/accountInformation",
@@ -20,7 +24,7 @@ class AccountInfoView extends React.Component {
     if (res.data.error) {
       window.location.href = "../login";
     }
-    console.log(res);
+    
     this.setState(() => ({
       email: res.data.data.email,
       name: res.data.data.name,
