@@ -24,12 +24,10 @@ class PropertyListVisualizer extends React.Component {
         </div>
       );
     }
-    console.log('eee')
-    console.log(this.props.items)
+    
     return this.props.items.map((e) => {
-      console.log(e);
       return (
-        <div>
+        <div key={e._id}>
           <h1>{e.name}</h1>
           <h5>Hourly Income: {e.hourlyIncome}</h5>
           <h5>Base Value: {e.value}</h5>

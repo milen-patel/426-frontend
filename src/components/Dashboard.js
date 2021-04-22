@@ -110,10 +110,18 @@ class Dashboard extends React.Component {
       },
     });
 
+    if (res.data.error) {
+    this.setState(() => ({
+      propertiesToShow: localProperties.data,
+    }));
+    } else {
     this.setState(() => ({
       balance: res.data.data.user.balance,
       propertiesToShow: localProperties.data,
     }));
+
+    }
+
   };
 
   render() {
