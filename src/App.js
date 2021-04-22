@@ -14,7 +14,6 @@ function App() {
       <Switch>
         <Route exact path="/426-frontend/">
           <p>Homepage</p>
-          <Login />
           <button onClick={() => {
             history.push("/426-frontend/login")
           }}>Move to Login</button>

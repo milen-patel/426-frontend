@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 class Register extends React.Component {
   constructor() {
@@ -45,7 +46,9 @@ class Register extends React.Component {
           password: this.state.passField,
         },
       });
-      window.location.href = "/426-frontend/login";
+      this.setState(() => ({
+        status: <Redirect to="/426-frontend/login"></Redirect>,
+      }));
     } catch (err) {
       this.setState(() => ({ status: err.toString() }));
     }
