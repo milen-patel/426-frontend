@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { token } from "../token";
 import { Redirect } from "react-router-dom";
-import GoogleMapReact from "google-map-react";
+import Map from "./Map";
 
 class Dashboard extends React.Component {
   constructor() {
@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
         lat: res.data.data.lat,
         lon: res.data.data.lon,
         range: 500,
-      }
+      },
     });
 
     this.setState(() => ({
@@ -108,21 +108,6 @@ class Dashboard extends React.Component {
     // Validate token
     if (!token.val || !this.validateToken()) {
       return <Redirect to="/426-frontend/login"></Redirect>;
-    }
-
-    // Show Nearby Properties on Map
-    let propertiesOnMapArr;
-    if (this.state.propertiesToShow) {
-      propertiesOnMapArr = this.state.propertiesToShow.map((e) => {
-        return (
-          <this.fakeComponent
-            lat={e.location[0]}
-            lng={e.location[1]}
-            txt={e.name}
-            key={e.name}
-          ></this.fakeComponent>
-        );
-      });
     }
 
     // Show Nearby Properties in a List
@@ -155,33 +140,14 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-     /w   <p>welcome</p>
+        <p>welcome</p>
         <p>
           <strong>Balance:</strong>
           {this.state.balance}
         </p>
         {walkOffer}
-        <walkOffer></walkOffer>
-        <div style={{ width: "500px", height: "500px" }}>
-          <GoogleMapReact
-            onChange={(e) => console.log(e)}
-            bootstrapURLKeys={{
-              key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-              language: "en",
-              region: "US",
-            }}
-            center={{ lat: this.state.lat, lng: this.state.lon }}
-            defaultZoom={15}
-            onClick={this.clickedMap}
-          >
-            <this.fakeComponent
-              lat={this.state.lat}
-              lng={this.state.lon}
-              txt={"ME"}
-            />
-            {propertiesOnMapArr}
-          </GoogleMapReact>
-        </div>
+        <walkOffer />
+        <Map userLat={this.state.lat} userLon={this.state.lon} properties={this.state.propertiesToShow} />
         <div>
           <hr />
           {nearbyPropertiesList}
@@ -190,13 +156,6 @@ class Dashboard extends React.Component {
     );
   }
 
-  fakeComponent = (props) => {
-    return (
-      <div>
-        <button>{props.txt}</button>
-      </div>
-    );
-  };
 
   propertyListEntry = (props) => {
     return (

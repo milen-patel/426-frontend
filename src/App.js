@@ -1,4 +1,4 @@
-import React, { Component } from "react"; //different
+import React from "react"; //different
 import { Route, Switch } from "react-router-dom";
 import "./components/Register";
 import Register from "./components/Register";
