@@ -1,20 +1,24 @@
-import axios from "axios";
 import React from "react";
-import { token } from "../token";
 import { Redirect } from "react-router-dom";
+import { token } from "../token";
+import axios from "axios";
 import PropertyOwnershipList from "./PropertyOwnershipList";
 
+// Response for loading the personal account information pages
 class AccountInfoView extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
 
+  // First time the component is rendered, go get data
   async componentDidMount() {
+    // Validate that the user has authenticated
     if (!token.val) {
       return;
     }
 
+    // Call backend for account information
     const res = await axios({
       method: "get",
       url: "https://backend-426.herokuapp.com/api/user/accountInformation",
@@ -22,11 +26,13 @@ class AccountInfoView extends React.Component {
         "auth-token": token.val,
       },
     });
+
+    // If the call fails, redirect the user
     if (res.data.error) {
       window.location.href = "../login";
     }
 
-    console.log(res);
+    // Set the state based on the result of the call
     this.setState(() => ({
       email: res.data.data.email,
       name: res.data.data.name,
@@ -40,10 +46,15 @@ class AccountInfoView extends React.Component {
     }));
   }
 
+  // Handler for if the user requests to upgrade their property limit
   onUpgrade = async () => {
-   if (this.state.balance <= this.state.maxProperties**3) {
-     return;
-   } 
+    // Make sure that they have enough money
+    if (this.state.balance <= this.state.maxProperties ** 3) {
+      alert("You don't have enough money for this transaction!");
+      return;
+    }
+
+    // Call API for upgrading
     const res = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/user/buyLevel",
@@ -52,31 +63,32 @@ class AccountInfoView extends React.Component {
       },
     });
 
-    console.log(res);
-
+    // Abort if error
     if (res.data.error) {
       alert("Unable to upgrade!");
       return;
-    } else {
-      this.setState(() => ({
-        balance: res.data.data.balance,
-        maxProperties: res.data.data.maxProperties,
-      }));
     }
 
-  }
-
+    // Update state after API Call
+    this.setState(() => ({
+      balance: res.data.data.balance,
+      maxProperties: res.data.data.maxProperties,
+    }));
+  };
 
   validateToken = () => {
     return true;
   };
 
+  // Handler for if the user wants to go back to the dashboard
   onRedirectRequest = () => {
+    // Update state so we render a <Redirect> tag
     this.setState(() => ({
       redirect: true,
     }));
   };
 
+  // Helper function for converting big integers into dollar readable format
   numberWithCommas(x) {
     if (!x) {
       return "";
@@ -90,13 +102,14 @@ class AccountInfoView extends React.Component {
       return <Redirect to="/426-frontend/login"></Redirect>;
     }
 
+    // If the user has requested to go back to the dashboard
     if (this.state.redirect) {
       return <Redirect to="/426-frontend/dashboard"></Redirect>;
     }
 
     return (
       <div>
-        <p>welcome</p>
+        <p>Welcome</p>
         <button onClick={this.onRedirectRequest}>Go Back to Dashboard</button>
         <button>Go to Leaderboard</button>
         <hr />
@@ -144,7 +157,8 @@ class AccountInfoView extends React.Component {
         <p>
           You can currently own up to {this.state.maxProperties} properties and
           you currently own {this.state.numProperties}. You can upgrade to{" "}
-          {2 * this.state.maxProperties} slots for {this.numberWithCommas(this.state.maxProperties ** 3)}
+          {2 * this.state.maxProperties} slots for{" "}
+          {this.numberWithCommas(this.state.maxProperties ** 3)}
         </p>
         {this.state.balance >= this.state.maxProperties ** 3 ? (
           <button onClick={this.onUpgrade}>Upgrade</button>
