@@ -103,6 +103,7 @@ class Dashboard extends React.Component {
         tier: tier,
       },
     });
+    console.log(res);
     const localProperties = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/nearbyProperties",
@@ -128,6 +129,13 @@ class Dashboard extends React.Component {
     }
   };
 
+  numberWithCommas(x) {
+    if (!x) {
+      return "";
+    }
+    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   render() {
     // Validate token
     if (!token.val || !this.validateToken()) {
@@ -143,7 +151,7 @@ class Dashboard extends React.Component {
         </button>
         <p>
           <strong>Balance:</strong>
-          {this.state.balance}
+          {this.numberWithCommas(this.state.balance)}
         </p>
         <Map
           userLat={this.state.lat}
