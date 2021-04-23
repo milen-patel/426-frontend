@@ -1,7 +1,9 @@
   let PropertyOnMap = (props) => {
     return (
       <div key ={props.name}>
-        <button>{props.name}</button>
+        <button>
+        {props.$hover ?props.name :"*"}
+        </button>
       </div>
     );
   };

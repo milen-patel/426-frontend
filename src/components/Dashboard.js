@@ -52,6 +52,12 @@ class Dashboard extends React.Component {
     return true;
   };
 
+  changePage = () => {
+    this.setState(() => ({
+      redirect: <Redirect to="/426-frontend/personal"></Redirect>,
+    }));
+  }
+
   makeMove = async (walkLat, walkLon) => {
     const res = await axios({
       method: "post",
@@ -94,7 +100,7 @@ class Dashboard extends React.Component {
       },
       data: {
         propertyId: id,
-        tier: tier
+        tier: tier,
       },
     });
     const localProperties = await axios({
@@ -111,17 +117,15 @@ class Dashboard extends React.Component {
     });
 
     if (res.data.error) {
-    this.setState(() => ({
-      propertiesToShow: localProperties.data,
-    }));
+      this.setState(() => ({
+        propertiesToShow: localProperties.data,
+      }));
     } else {
-    this.setState(() => ({
-      balance: res.data.data.user.balance,
-      propertiesToShow: localProperties.data,
-    }));
-
+      this.setState(() => ({
+        balance: res.data.data.user.balance,
+        propertiesToShow: localProperties.data,
+      }));
     }
-
   };
 
   render() {
@@ -133,6 +137,10 @@ class Dashboard extends React.Component {
     return (
       <div>
         <p>welcome</p>
+        {this.state.redirect}
+        <button onClick={this.changePage}>
+          Go to Account View
+        </button>
         <p>
           <strong>Balance:</strong>
           {this.state.balance}

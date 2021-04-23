@@ -11,6 +11,10 @@ class Map extends React.Component {
     };
   }
 
+  onAddressLookup = (lat, lon) => {
+    console.log(lat, lon);
+  }
+
   clickedMap = (e) => {
     const walkCost = this.distanceInmBetweenEarthCoordinates(
       this.props.userLat,
@@ -31,6 +35,7 @@ class Map extends React.Component {
     if (this.state.shouldShowWalkOffer) {
       walkOffer = (
         <div>
+          <hr />
           Lat: {this.state.walkLat}
           <br />
           Lon: {this.state.walkLon}
@@ -49,13 +54,22 @@ class Map extends React.Component {
           ) : (
             <button type="button">Insufficient Funds</button>
           )}
+          <hr />
         </div>
       );
     }
 
     let propertyVisuals;
     if (this.props.properties) {
-      propertyVisuals = this.props.properties.map((e) => <PropertyOnMap location={e.location} name={e.name} lat={e.location[0]} lng={e.location[1]}/>);
+      propertyVisuals = this.props.properties.map((e) => (
+        <PropertyOnMap
+          location={e.location}
+          name={e.name}
+          lat={e.location[0]}
+          lng={e.location[1]}
+          key={e.location[0]+""+e.location[1]}
+        />
+      ));
     }
 
     return (

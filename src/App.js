@@ -27,7 +27,7 @@ function App() {
         <Route path="/426-frontend/register">
           <Register />
         </Route>
-        <Route path="/426-frontend/accountInfo">
+        <Route path="/426-frontend/personal">
           <AccountInfoView />
         </Route>
         <Route path="/426-frontend/dashboard">
