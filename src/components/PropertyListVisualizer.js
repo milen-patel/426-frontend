@@ -11,9 +11,16 @@ class PropertyListVisualizer extends React.Component {
           this.props.handler(id, tier);
         }}
       >
-        Purchase {`${cost}`}
+        Purchase for {`${this.numberWithCommas(cost)}`}
       </button>
     );
+  }
+
+  numberWithCommas(x) {
+    if (!x) {
+      return "";
+    }
+    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   generateEntries() {
@@ -25,6 +32,7 @@ class PropertyListVisualizer extends React.Component {
       );
     }
     
+
     return this.props.items.map((e) => {
       return (
         <div key={e._id}>

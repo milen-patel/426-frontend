@@ -1,19 +1,27 @@
-import React from "react"; //different
+// React Imports
+import React from "react"; 
 import { Route, Switch } from "react-router-dom";
-import "./components/Register";
+import { useHistory } from "react-router"
+
+// Component Imports
 import Register from "./components/Register";
 import Login from "./components/Login";
 import AccountInfoView from "./components/AccountInfoView";
 import Dashboard from "./components/Dashboard";
+<<<<<<< HEAD
 import { useHistory } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import "./app.css";
 //import Jumbotron from 'react-bootstrap/Jumbotron'
 
+=======
+>>>>>>> a9a957690fc18d2be0cb9c8dd1c6b35778ecb22e
 
 function App() {
+  // Hook for changing browser destination
   let history = useHistory();
+
     return (
       <Switch>
         <Route exact path="/426-frontend/">
@@ -41,7 +49,7 @@ function App() {
         <Route path="/426-frontend/register">
           <Register />
         </Route>
-        <Route path="/426-frontend/accountInfo">
+        <Route path="/426-frontend/personal">
           <AccountInfoView />
         </Route>
         <Route path="/426-frontend/dashboard">

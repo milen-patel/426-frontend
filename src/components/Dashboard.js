@@ -1,21 +1,24 @@
-import axios from "axios";
 import React from "react";
-import { token } from "../token";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
+import { token } from "../token";
 import Map from "./Map";
 import PropertyListVisualizer from "./PropertyListVisualizer";
 
+// Responsible for rendering the dashboard shown to the user after authentication
 class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
 
+  // When the component first loads, fetch information
   async componentDidMount() {
     if (!token.val || !this.validateToken()) {
       return;
     }
 
+    // Call the backend to get user account information
     const res = await axios({
       method: "get",
       url: "https://backend-426.herokuapp.com/api/user/accountInformation",
@@ -23,10 +26,13 @@ class Dashboard extends React.Component {
         "auth-token": token.val,
       },
     });
+
+    // If the call fails, redirect user to authenticate
     if (res.data.error) {
       window.location.href = "../login";
     }
 
+    // Call backend to find properties to show on the map
     const localProperties = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/nearbyProperties",
@@ -40,6 +46,12 @@ class Dashboard extends React.Component {
       },
     });
 
+    // If the call fails, redirect user to authenticate
+    if (res.data.error) {
+      window.location.href = "../login";
+    }
+
+    // Store both results in state
     this.setState(() => ({
       balance: res.data.data.balance,
       lat: res.data.data.location[0],
@@ -52,7 +64,17 @@ class Dashboard extends React.Component {
     return true;
   };
 
+  // If the user requests to go to the account view page
+  changePage = () => {
+    // Update state so we render a Redirect tag
+    this.setState(() => ({
+      redirect: <Redirect to="/426-frontend/personal"></Redirect>,
+    }));
+  }
+
+  // If the user requests to make a move on the map
   makeMove = async (walkLat, walkLon) => {
+    // Immediately call backend
     const res = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/user/move",
@@ -64,6 +86,8 @@ class Dashboard extends React.Component {
         lon: walkLon,
       },
     });
+
+    // Get the new properties that are nearby the user
     const localProperties = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/nearbyProperties",
@@ -77,6 +101,7 @@ class Dashboard extends React.Component {
       },
     });
 
+    // Update state accordingly
     this.setState(() => ({
       balance: res.data.data.balance,
       lat: res.data.data.lat,
@@ -85,7 +110,9 @@ class Dashboard extends React.Component {
     }));
   };
 
+  // Handler if the user requests to buy a certain tier of a property
   makePurchase = async (id, tier) => {
+    // Defer to backend
     const res = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/buy",
@@ -94,9 +121,11 @@ class Dashboard extends React.Component {
       },
       data: {
         propertyId: id,
-        tier: tier
+        tier: tier,
       },
     });
+
+    // Refresh property information
     const localProperties = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/nearbyProperties",
@@ -110,19 +139,27 @@ class Dashboard extends React.Component {
       },
     });
 
+
+    // Handle results and possible error
     if (res.data.error) {
-    this.setState(() => ({
-      propertiesToShow: localProperties.data,
-    }));
+      this.setState(() => ({
+        propertiesToShow: localProperties.data,
+      }));
     } else {
-    this.setState(() => ({
-      balance: res.data.data.user.balance,
-      propertiesToShow: localProperties.data,
-    }));
-
+      this.setState(() => ({
+        balance: res.data.data.user.balance,
+        propertiesToShow: localProperties.data,
+      }));
     }
-
   };
+
+  // Helper for turning big int into dollar readable format
+  numberWithCommas(x) {
+    if (!x) {
+      return "";
+    }
+    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   render() {
     // Validate token
@@ -133,9 +170,13 @@ class Dashboard extends React.Component {
     return (
       <div>
         <p>welcome</p>
+        {this.state.redirect}
+        <button onClick={this.changePage}>
+          Go to Account View
+        </button>
         <p>
           <strong>Balance:</strong>
-          {this.state.balance}
+          {this.numberWithCommas(this.state.balance)}
         </p>
         <Map
           userLat={this.state.lat}
