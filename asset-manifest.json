@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/426-frontend/static/css/main.957e5010.chunk.css",
-    "main.js": "/426-frontend/static/js/main.f157da59.chunk.js",
-    "main.js.map": "/426-frontend/static/js/main.f157da59.chunk.js.map",
+    "main.css": "/426-frontend/static/css/main.a6bd74fc.chunk.css",
+    "main.js": "/426-frontend/static/js/main.e7468ef5.chunk.js",
+    "main.js.map": "/426-frontend/static/js/main.e7468ef5.chunk.js.map",
     "runtime-main.js": "/426-frontend/static/js/runtime-main.25638c7a.js",
     "runtime-main.js.map": "/426-frontend/static/js/runtime-main.25638c7a.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/426-frontend/static/css/2.4c97ca4f.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.b8f26599.chunk.js.map": "/426-frontend/static/js/3.b8f26599.chunk.js.map",
     "index.html": "/426-frontend/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/426-frontend/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.957e5010.chunk.css.map": "/426-frontend/static/css/main.957e5010.chunk.css.map",
+    "static/css/main.a6bd74fc.chunk.css.map": "/426-frontend/static/css/main.a6bd74fc.chunk.css.map",
     "static/js/2.8a84ede5.chunk.js.LICENSE.txt": "/426-frontend/static/js/2.8a84ede5.chunk.js.LICENSE.txt",
     "static/media/MapMarkerIcon.fb4229c5.png": "/426-frontend/static/media/MapMarkerIcon.fb4229c5.png",
     "static/media/UserOnMapIcon.3e0031bf.png": "/426-frontend/static/media/UserOnMapIcon.3e0031bf.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.25638c7a.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.8a84ede5.chunk.js",
-    "static/css/main.957e5010.chunk.css",
-    "static/js/main.f157da59.chunk.js"
+    "static/css/main.a6bd74fc.chunk.css",
+    "static/js/main.e7468ef5.chunk.js"
   ]
 }
