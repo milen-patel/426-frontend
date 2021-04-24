@@ -1,9 +1,11 @@
-  function UserOnMap (props) {
-    return (
-      <div>
-        <button>{props.name}</button>
-      </div>
-    );
-  };
+import icon from "./UserOnMapIcon.png";
 
-  export default UserOnMap;
+function UserOnMap(props) {
+  return (
+    <div>
+      <img src={icon} style={{ width: "30px" }} alt={""} />
+    </div>
+  );
+}
+
+export default UserOnMap;

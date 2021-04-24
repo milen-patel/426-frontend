@@ -91,10 +91,16 @@ class AccountInfoView extends React.Component {
   // Helper function for converting big integers into dollar readable format
   numberWithCommas(x) {
     if (!x) {
-      return "";
+      return "$0";
     }
     return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+  onSell = (email, propertyId, tier) => {
+    alert(email);
+    alert(propertyId);
+    alert(tier);
+  };
 
   render() {
     // Validate token
@@ -136,8 +142,8 @@ class AccountInfoView extends React.Component {
             {this.state.maxProperties}
           </li>
           <li>
-            <strong>Experience: </strong>
-            {this.state.experience}
+            <strong>Total Earnings: </strong>
+            {this.numberWithCommas(this.state.experience)}
           </li>
           <li>
             <strong>Latitude: </strong>
@@ -167,7 +173,11 @@ class AccountInfoView extends React.Component {
         )}
         <hr />
         <h1>Your Properties:</h1>
-        <PropertyOwnershipList items={this.state.properties} />
+        <PropertyOwnershipList
+          items={this.state.properties}
+          email={this.state.email}
+          onSell={this.onSell.bind(this)}
+        />
         <hr />
       </div>
     );

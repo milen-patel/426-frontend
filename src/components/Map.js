@@ -2,17 +2,16 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
+import PropertyListVisualizer from "./PropertyListVisualizer";
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldShowWalkOffer: false,
+      walkLat: this.props.userLat,
+      walkLon: this.props.userLon,
+      walkCost: 0,
     };
-  }
-
-  onAddressLookup = (lat, lon) => {
-    console.log(lat, lon);
   }
 
   clickedMap = (e) => {
@@ -26,13 +25,26 @@ class Map extends React.Component {
       walkLat: e.lat,
       walkLon: e.lng,
       walkCost: walkCost,
-      shouldShowWalkOffer: true,
     }));
   };
 
+
+  onHover = (e) => {
+    // Take the location and find the correct property
+    const target = this.props.properties.find((c) => {
+      return ((c.location[0] === e[0]) && (c.location[1] === e[1]))
+    })
+    console.log("E");
+
+    //Update state
+    this.setState(() => ({
+      hoverInfo: target,
+    }));
+
+  }
+
   render() {
     let walkOffer;
-    if (this.state.shouldShowWalkOffer) {
       walkOffer = (
         <div>
           <hr />
@@ -57,7 +69,6 @@ class Map extends React.Component {
           <hr />
         </div>
       );
-    }
 
     let propertyVisuals;
     if (this.props.properties) {
@@ -68,13 +79,22 @@ class Map extends React.Component {
           lat={e.location[0]}
           lng={e.location[1]}
           key={e.location[0]+""+e.location[1]}
+          onHover={this.onHover}
         />
       ));
+    }
+
+    let hoverVisuals = "Click a property for more details";
+    if (this.state.hoverInfo) {
+      hoverVisuals = (<div>
+      <PropertyListVisualizer items={[this.state.hoverInfo]} />
+      </div>);
     }
 
     return (
       <div>
         {walkOffer}
+        {hoverVisuals}
         <div style={{ width: "500px", height: "500px" }}>
           <GoogleMapReact
             bootstrapURLKeys={{

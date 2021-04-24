@@ -1,6 +1,12 @@
 import React from "react";
 
 class PropertyListVisualizer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: this.props.items
+    }
+  }
   generateBuyButton(id, tier, cost) {
     if (cost > this.props.balance) {
       return <button>Not enough $$$</button>;
@@ -20,22 +26,21 @@ class PropertyListVisualizer extends React.Component {
     if (!x) {
       return "";
     }
-    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  generateEntries() {
-    if (!this.props.items || this.props.items.length === 0) {
+  generateEntries(rawData) {
+    if (!rawData || rawData.length === 0) {
       return (
         <div>
           <h1>No nearby properties found...</h1>
         </div>
       );
     }
-    
 
-    return this.props.items.map((e) => {
+    return rawData.map((e) => {
       return (
-        <div key={e._id}>
+        <div key={String(e._id)}>
           <h1>{e.name}</h1>
           <h5>Hourly Income: {e.hourlyIncome}</h5>
           <h5>Base Value: {e.value}</h5>
@@ -80,7 +85,75 @@ class PropertyListVisualizer extends React.Component {
   }
 
   render() {
-    return <div>{this.generateEntries()}</div>;
+    let filter;
+    if (this.state.items && this.state.items.length > 1) {
+      filter = (
+        <div>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.value > b.value ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Value Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.value > b.value ? -1 : 1;
+              })}));
+            }}
+          >
+            Sort by Value Descending
+          </button>
+          <br />
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.hourlyIncome > b.hourlyIncome ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Income Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.hourlyIncome > b.hourlyIncome ? -1 : 1;
+              })}));
+            }}
+          >
+            Sort by Income Descending
+          </button>
+          <br />
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.level > b.level ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Level Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({items:prevState.items.sort((a, b) => {
+                return a.hourlyIncome > b.hourlyIncome ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Level Descending
+          </button>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <div>{filter}</div>
+        {this.generateEntries(this.state.items)}
+      </div>
+    );
   }
 }
 

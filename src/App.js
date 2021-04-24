@@ -1,7 +1,6 @@
 // React Imports
 import React from "react"; 
 import { Route, Switch } from "react-router-dom";
-import { useHistory } from "react-router"
 
 // Component Imports
 import Register from "./components/Register";
@@ -10,7 +9,6 @@ import AccountInfoView from "./components/AccountInfoView";
 import Dashboard from "./components/Dashboard";
 import { useHistory } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 import "./app.css";
 //import Jumbotron from 'react-bootstrap/Jumbotron'
 

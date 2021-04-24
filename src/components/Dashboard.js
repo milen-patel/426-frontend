@@ -191,6 +191,7 @@ class Dashboard extends React.Component {
             items={this.state.propertiesToShow}
             balance={this.state.balance}
             handler={this.makePurchase}
+            key={this.state.propertiesToShow}
           />
         </div>
       </div>
