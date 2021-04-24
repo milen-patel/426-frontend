@@ -4,6 +4,7 @@ import { token } from "../token";
 import { Redirect } from "react-router-dom";
 import "./login.css";
 
+
 class Login extends React.Component {
   constructor() {
     super();
@@ -53,6 +54,8 @@ class Login extends React.Component {
   render() {
     //CASEY: Display field requirements
     return (
+<div>
+<video src="https://www.youtube.com/embed/_Sl8diqCAFw" autoPlay loop playsInline muted></video>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -68,29 +71,10 @@ class Login extends React.Component {
         </div>
     </div>
 </div>
-/*
-<button
-  type="button"
-  class="btn btn-outline-success btn-rounded"
-  data-mdb-ripple-color="dark"
->
-  Success
-</button>
-      <div>
-        {this.state.status}
-        {this.state.status ? <br /> : ""}
-        Email:
-        <input type="text" onChange={this.emailFieldChanged}></input>
-        <br />
-        Password:
-        <input type="password" onChange={this.passwordFieldChanged}></input>
-        <br />
-        Login:
-        <button type="button" onClick={this.onLogin}>
-          Login
-        </button>
-      </div>
-      */
+</div>
+
+
+  
     );
   }
 }
