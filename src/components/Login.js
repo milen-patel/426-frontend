@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { token } from "../token";
 import { Redirect } from "react-router-dom";
+import "./login.css";
 
 class Login extends React.Component {
   constructor() {
@@ -52,6 +53,29 @@ class Login extends React.Component {
   render() {
     //CASEY: Display field requirements
     return (
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                  {this.state.status}
+                  {this.state.status ? <br /> : ""}
+                <form class="box">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your Email and Password!</p><input type="text" placeholder = "Email" onChange={this.emailFieldChanged}></input><br /><input type="password" placeholder = "Password" onChange={this.passwordFieldChanged}></input>
+        <br /><button type="button" class = "btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark" onClick={this.onLogin}>Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+/*
+<button
+  type="button"
+  class="btn btn-outline-success btn-rounded"
+  data-mdb-ripple-color="dark"
+>
+  Success
+</button>
       <div>
         {this.state.status}
         {this.state.status ? <br /> : ""}
@@ -66,6 +90,7 @@ class Login extends React.Component {
           Login
         </button>
       </div>
+      */
     );
   }
 }
