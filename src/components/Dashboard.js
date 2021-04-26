@@ -125,6 +125,7 @@ class Dashboard extends React.Component {
       },
     });
 
+
     // Refresh property information
     const localProperties = await axios({
       method: "post",
@@ -138,7 +139,6 @@ class Dashboard extends React.Component {
         range: 500,
       },
     });
-
 
     // Handle results and possible error
     if (res.data.error) {
@@ -158,6 +158,7 @@ class Dashboard extends React.Component {
     if (!x) {
       return "";
     }
+    x = parseFloat(x.toFixed(2));
     return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
@@ -167,12 +168,20 @@ class Dashboard extends React.Component {
       return <Redirect to="/426-frontend/login"></Redirect>;
     }
 
+    let vals = this.state.propertiesToShow;
+
     return (
       <div>
         <p>welcome</p>
         {this.state.redirect}
+        {this.state.goToLeaderboard}
         <button onClick={this.changePage}>
           Go to Account View
+        </button>
+        <button onClick={() => {
+          this.setState(() => ({goToLeaderboard:<Redirect to="/426-frontend/leaderboard"></Redirect>}))
+        }}>
+          Go to Leaderboard
         </button>
         <p>
           <strong>Balance:</strong>
@@ -184,14 +193,73 @@ class Dashboard extends React.Component {
           properties={this.state.propertiesToShow}
           userBalance={this.state.balance}
           moveHandler={this.makeMove.bind(this)}
+          focusHandler={this.makePurchase.bind(this)}
         />
         <div>
           <hr />
+          <p>{this.state.propertiesToShow ? `Showing ${this.state.propertiesToShow.length} properties` : 'Showing no properties'}</p>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.value > b.value ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Value Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.value > b.value ? -1 : 1;
+              })}));
+            }}
+          >
+            Sort by Value Ascending
+          </button>
+          <br />
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.hourlyIncome > b.hourlyIncome ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Income Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.hourlyIncome > b.hourlyIncome ? -1 : 1;
+              })}));
+            }}
+          >
+            Sort by Income Descending
+          </button>
+          <br />
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.level > b.level ? 1 : -1;
+              })}));
+            }}
+          >
+            Sort by Level Ascending
+          </button>
+          <button
+            onClick={() => {
+              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
+                return a.level > b.level ? -1 : 1;
+              })}));
+            }}
+          >
+            Sort by Level Descending
+          </button>
           <PropertyListVisualizer
-            items={this.state.propertiesToShow}
+            items={vals}
             balance={this.state.balance}
-            handler={this.makePurchase}
+            handler={this.makePurchase.bind(this)}
             key={this.state.propertiesToShow}
+            id={vals}
           />
         </div>
       </div>

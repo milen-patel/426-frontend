@@ -2,7 +2,6 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
-import PropertyListVisualizer from "./PropertyListVisualizer";
 
 class Map extends React.Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class Map extends React.Component {
     this.setState(() => ({
       walkLat: e.lat,
       walkLon: e.lng,
-      walkCost: walkCost,
+      walkCost: walkCost.toFixed(2),
     }));
   };
 
@@ -48,16 +47,21 @@ class Map extends React.Component {
       walkOffer = (
         <div>
           <hr />
-          Lat: {this.state.walkLat}
+          <strong>Latitude:</strong> {this.state.walkLat}
           <br />
-          Lon: {this.state.walkLon}
+          <strong>Longitude: </strong>{this.state.walkLon}
           <br />
-          Cost: {this.state.walkCost}
+          <strong>Cost: </strong>${this.state.walkCost}
           <br />
           {this.props.userBalance > this.state.walkCost ? (
             <button
               type="button"
               onClick={() => {
+                // Only call API if they are moving to a new location
+                if (this.state.walkCost === 0) {
+                  return;
+                }
+
                 this.props.moveHandler(this.state.walkLat, this.state.walkLon);
               }}
             >
@@ -86,9 +90,16 @@ class Map extends React.Component {
 
     let hoverVisuals = "Click a property for more details";
     if (this.state.hoverInfo) {
-      hoverVisuals = (<div>
-      <PropertyListVisualizer items={[this.state.hoverInfo]} />
-      </div>);
+      //hoverVisuals = (<div>
+      //<PropertyListVisualizer items={[this.state.hoverInfo]} handler={this.props.focusHandler} />
+      //</div>);
+      hoverVisuals = (
+        <div>
+          <h5>Name: {this.state.hoverInfo.name}</h5>
+          <h5>Value: {this.state.hoverInfo.value}</h5>
+          <h5>Income: {this.state.hoverInfo.hourlyIncome}</h5>
+        </div>
+      )
     }
 
     return (

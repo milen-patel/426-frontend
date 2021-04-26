@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import AccountInfoView from "./components/AccountInfoView";
 import Dashboard from "./components/Dashboard";
+import Leaderboard from "./components/Leaderboard";
 import { useHistory } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./app.css";
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path="/426-frontend/dashboard">
           <Dashboard />
+        </Route>
+        <Route path="/426-frontend/leaderboard">
+          <Leaderboard />
         </Route>
       </Switch>
     );

@@ -88,18 +88,43 @@ class AccountInfoView extends React.Component {
     }));
   };
 
+  //Handler if the user wants to go to the leaderboard
+  onLeaderboardRequest = () => {
+    // Update state so we render a <Redirect> tag
+    this.setState(() => ({
+      redirectLeader: true,
+    }));
+  };
+
   // Helper function for converting big integers into dollar readable format
   numberWithCommas(x) {
     if (!x) {
       return "$0";
     }
+    x = parseFloat(x.toFixed(2));
     return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  onSell = (email, propertyId, tier) => {
-    alert(email);
-    alert(propertyId);
-    alert(tier);
+  onSell = async (email, propertyId, tier) => {
+    const res = await axios({
+      method: "post",
+      url: "https://backend-426.herokuapp.com/api/property/sell",
+      headers: {
+        "auth-token": token.val,
+      },
+      data: {
+        email: email,
+        id: propertyId,
+        tier: tier,
+      }
+    });
+    console.log(res);
+    this.setState(() => ({
+      maxProperties: res.data.data.maxProperties,
+      location: res.data.data.user.location,
+      numProperties: res.data.data.user.properties.length,
+      properties: res.data.data.properties,
+    }));
   };
 
   render() {
@@ -113,11 +138,16 @@ class AccountInfoView extends React.Component {
       return <Redirect to="/426-frontend/dashboard"></Redirect>;
     }
 
+    // If user wants to visit leaderboard
+    if (this.state.redirectLeader) {
+      return <Redirect to="/426-frontend/leaderboard"></Redirect>
+    }
+
     return (
       <div>
         <p>Welcome</p>
         <button onClick={this.onRedirectRequest}>Go Back to Dashboard</button>
-        <button>Go to Leaderboard</button>
+        <button onClick={this.onLeaderboardRequest}>Go to Leaderboard</button>
         <hr />
         <h1>Account Information:</h1>
         <ul>
