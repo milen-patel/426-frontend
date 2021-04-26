@@ -108,6 +108,7 @@ class Dashboard extends React.Component {
       lon: res.data.data.lon,
       propertiesToShow: localProperties.data,
     }));
+    return true;
   };
 
   // Handler if the user requests to buy a certain tier of a property

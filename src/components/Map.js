@@ -56,13 +56,16 @@ class Map extends React.Component {
           {this.props.userBalance > this.state.walkCost ? (
             <button
               type="button"
-              onClick={() => {
+              onClick={async () => {
                 // Only call API if they are moving to a new location
                 if (this.state.walkCost === 0) {
                   return;
                 }
 
-                this.props.moveHandler(this.state.walkLat, this.state.walkLon);
+                if (await this.props.moveHandler(this.state.walkLat, this.state.walkLon)) {
+                  // Now it costs no money to move where we are
+                  this.setState(() => ({walkCost: 0}));
+                }
               }}
             >
               Move

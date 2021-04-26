@@ -8,7 +8,9 @@ import PropertyOwnershipList from "./PropertyOwnershipList";
 class AccountInfoView extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      multiplier: 1.0
+    };
   }
 
   // First time the component is rendered, go get data
@@ -38,12 +40,43 @@ class AccountInfoView extends React.Component {
       name: res.data.data.name,
       created: res.data.data.accountCreatedDate,
       balance: res.data.data.balance,
+      multiplier: res.data.data.multiplier,
       maxProperties: res.data.data.maxProperties,
       experience: res.data.data.experience,
       location: res.data.data.location,
       numProperties: res.data.data.properties.length,
       properties: res.data.properties,
     }));
+  }
+
+  onUpgradeMultiplier = async () => {
+    // Make sure that they have enough money
+    if (this.state.balance <= 1000000) {
+      alert("You don't have enough money for this transaction!");
+      return;
+    }
+
+    // Call API for upgrading
+    const res = await axios({
+      method: "post",
+      url: "https://backend-426.herokuapp.com/api/user/increaseMultiplier",
+      headers: {
+        "auth-token": token.val,
+      },
+    });
+
+    // Abort if error
+    if (res.data.error) {
+      alert("Unable to upgrade!");
+      return;
+    }
+
+    // Update state after API Call
+    this.setState(() => ({
+      balance: res.data.data.balance,
+      multiplier: res.data.data.maxProperties,
+    }));
+
   }
 
   // Handler for if the user requests to upgrade their property limit
@@ -199,8 +232,14 @@ class AccountInfoView extends React.Component {
         {this.state.balance >= this.state.maxProperties ** 3 ? (
           <button onClick={this.onUpgrade}>Upgrade</button>
         ) : (
-          <button>Not enough funds!</button>
+          <button>Not Enough funds!</button>
         )}
+        <p>Your income multiplier is currently {this.state.multiplier.toFixed(2)}. You can upgrade to {(this.state.multiplier+0.01).toFixed(2)} for $1,000,000</p>
+        {
+          this.state.balance >= 1000000 ? (
+            <button onClick={this.onUpgradeMultiplier}>Upgrade</button>
+          ) : <button>Not Enough Funds!</button>
+        }
         <hr />
         <h1>Your Properties:</h1>
         <PropertyOwnershipList

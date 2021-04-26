@@ -73,7 +73,7 @@ class Leaderboard extends React.Component {
           {this.state.people
             ? this.state.people.map((p) => {
                 return (
-                  <li>
+                  <li key={p.name + p.experience}>
                     <div>
                         <strong>Name:</strong> {p.name}
                         <br/>
