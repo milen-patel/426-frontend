@@ -40,7 +40,6 @@ class Leaderboard extends React.Component {
       return;
     }
 
-    console.log(res.data.data);
     this.setState(() => ({
       people: res.data.data,
     }));

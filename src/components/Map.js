@@ -33,7 +33,6 @@ class Map extends React.Component {
     const target = this.props.properties.find((c) => {
       return ((c.location[0] === e[0]) && (c.location[1] === e[1]))
     })
-    console.log("E");
 
     //Update state
     this.setState(() => ({

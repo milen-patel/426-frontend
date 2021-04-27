@@ -151,7 +151,7 @@ class AccountInfoView extends React.Component {
         tier: tier,
       }
     });
-    console.log(res);
+    
     this.setState(() => ({
       maxProperties: res.data.data.maxProperties,
       location: res.data.data.user.location,
@@ -207,6 +207,10 @@ class AccountInfoView extends React.Component {
           <li>
             <strong>Total Earnings: </strong>
             {this.numberWithCommas(this.state.experience)}
+          </li>
+          <li>
+            <strong>multiplier: </strong>
+            {this.state.multiplier.toFixed(2)} 
           </li>
           <li>
             <strong>Latitude: </strong>
