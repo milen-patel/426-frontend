@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
   // When the component first loads, fetch information
   async componentDidMount() {
-    if (!token.val || !this.validateToken()) {
+    if (!token.val) {
       return;
     }
 
@@ -60,17 +60,13 @@ class Dashboard extends React.Component {
     }));
   }
 
-  validateToken = () => {
-    return true;
-  };
-
   // If the user requests to go to the account view page
   changePage = () => {
     // Update state so we render a Redirect tag
     this.setState(() => ({
       redirect: <Redirect to="/426-frontend/personal"></Redirect>,
     }));
-  }
+  };
 
   // If the user requests to make a move on the map
   makeMove = async (walkLat, walkLon) => {
@@ -108,6 +104,8 @@ class Dashboard extends React.Component {
       lon: res.data.data.lon,
       propertiesToShow: localProperties.data,
     }));
+
+    // Inform the walk offer component that the move succeeded
     return true;
   };
 
@@ -125,7 +123,6 @@ class Dashboard extends React.Component {
         tier: tier,
       },
     });
-
 
     // Refresh property information
     const localProperties = await axios({
@@ -160,12 +157,12 @@ class Dashboard extends React.Component {
       return "";
     }
     x = parseFloat(x.toFixed(2));
-    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   render() {
     // Validate token
-    if (!token.val || !this.validateToken()) {
+    if (!token.val) {
       return <Redirect to="/426-frontend/login"></Redirect>;
     }
 
@@ -173,15 +170,19 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <p>welcome</p>
+        <h1>Welcome: A game by Casey S. and Milen P.</h1>
         {this.state.redirect}
         {this.state.goToLeaderboard}
-        <button onClick={this.changePage}>
-          Go to Account View
-        </button>
-        <button onClick={() => {
-          this.setState(() => ({goToLeaderboard:<Redirect to="/426-frontend/leaderboard"></Redirect>}))
-        }}>
+        <button onClick={this.changePage}>Go to Account View</button>
+        <button
+          onClick={() => {
+            this.setState(() => ({
+              goToLeaderboard: (
+                <Redirect to="/426-frontend/leaderboard"></Redirect>
+              ),
+            }));
+          }}
+        >
           Go to Leaderboard
         </button>
         <p>
@@ -198,21 +199,29 @@ class Dashboard extends React.Component {
         />
         <div>
           <hr />
-          <p>{this.state.propertiesToShow ? `Showing ${this.state.propertiesToShow.length} properties` : 'Showing no properties'}</p>
+          <p>
+            {this.state.propertiesToShow
+              ? `Showing ${this.state.propertiesToShow.length} properties`
+              : "Showing no properties"}
+          </p>
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.value > b.value ? 1 : -1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.value > b.value ? 1 : -1;
+                }),
+              }));
             }}
           >
             Sort by Value Ascending
           </button>
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.value > b.value ? -1 : 1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.value > b.value ? -1 : 1;
+                }),
+              }));
             }}
           >
             Sort by Value Ascending
@@ -220,18 +229,22 @@ class Dashboard extends React.Component {
           <br />
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.hourlyIncome > b.hourlyIncome ? 1 : -1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.hourlyIncome > b.hourlyIncome ? 1 : -1;
+                }),
+              }));
             }}
           >
             Sort by Income Ascending
           </button>
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.hourlyIncome > b.hourlyIncome ? -1 : 1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.hourlyIncome > b.hourlyIncome ? -1 : 1;
+                }),
+              }));
             }}
           >
             Sort by Income Descending
@@ -239,18 +252,22 @@ class Dashboard extends React.Component {
           <br />
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.level > b.level ? 1 : -1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.level > b.level ? 1 : -1;
+                }),
+              }));
             }}
           >
             Sort by Level Ascending
           </button>
           <button
             onClick={() => {
-              this.setState((prevState) => ({propertiesToShow:prevState.propertiesToShow.sort((a, b) => {
-                return a.level > b.level ? -1 : 1;
-              })}));
+              this.setState((prevState) => ({
+                propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
+                  return a.level > b.level ? -1 : 1;
+                }),
+              }));
             }}
           >
             Sort by Level Descending

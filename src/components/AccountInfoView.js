@@ -9,14 +9,15 @@ class AccountInfoView extends React.Component {
   constructor() {
     super();
     this.state = {
-      multiplier: 1.0
+      multiplier: 1.0,
     };
   }
 
-  // First time the component is rendered, go get data
+  // First time the component is rendered, fetch data
   async componentDidMount() {
     // Validate that the user has authenticated
     if (!token.val) {
+      // Don't fetch, render will automatically redirect the user
       return;
     }
 
@@ -49,6 +50,7 @@ class AccountInfoView extends React.Component {
     }));
   }
 
+  // Handler if the user requests to upgrade their income multiplier
   onUpgradeMultiplier = async () => {
     // Make sure that they have enough money
     if (this.state.balance <= 1000000) {
@@ -74,10 +76,9 @@ class AccountInfoView extends React.Component {
     // Update state after API Call
     this.setState(() => ({
       balance: res.data.data.balance,
-      multiplier: res.data.data.maxProperties,
+      multiplier: res.data.data.multiplier,
     }));
-
-  }
+  };
 
   // Handler for if the user requests to upgrade their property limit
   onUpgrade = async () => {
@@ -109,10 +110,6 @@ class AccountInfoView extends React.Component {
     }));
   };
 
-  validateToken = () => {
-    return true;
-  };
-
   // Handler for if the user wants to go back to the dashboard
   onRedirectRequest = () => {
     // Update state so we render a <Redirect> tag
@@ -138,7 +135,9 @@ class AccountInfoView extends React.Component {
     return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // Handler if the user requests to sell a property
   onSell = async (email, propertyId, tier) => {
+    // Defer to backend
     const res = await axios({
       method: "post",
       url: "https://backend-426.herokuapp.com/api/property/sell",
@@ -149,9 +148,10 @@ class AccountInfoView extends React.Component {
         email: email,
         id: propertyId,
         tier: tier,
-      }
+      },
     });
-    
+
+    // Update state with properties that may have changed
     this.setState(() => ({
       maxProperties: res.data.data.maxProperties,
       location: res.data.data.user.location,
@@ -162,7 +162,7 @@ class AccountInfoView extends React.Component {
 
   render() {
     // Validate token
-    if (!token.val || !this.validateToken()) {
+    if (!token.val) {
       return <Redirect to="/426-frontend/login"></Redirect>;
     }
 
@@ -173,7 +173,7 @@ class AccountInfoView extends React.Component {
 
     // If user wants to visit leaderboard
     if (this.state.redirectLeader) {
-      return <Redirect to="/426-frontend/leaderboard"></Redirect>
+      return <Redirect to="/426-frontend/leaderboard"></Redirect>;
     }
 
     return (
@@ -210,7 +210,7 @@ class AccountInfoView extends React.Component {
           </li>
           <li>
             <strong>multiplier: </strong>
-            {this.state.multiplier.toFixed(2)} 
+            {this.state.multiplier.toFixed(2)}
           </li>
           <li>
             <strong>Latitude: </strong>
@@ -238,12 +238,16 @@ class AccountInfoView extends React.Component {
         ) : (
           <button>Not Enough funds!</button>
         )}
-        <p>Your income multiplier is currently {this.state.multiplier.toFixed(2)}. You can upgrade to {(this.state.multiplier+0.01).toFixed(2)} for $1,000,000</p>
-        {
-          this.state.balance >= 1000000 ? (
-            <button onClick={this.onUpgradeMultiplier}>Upgrade</button>
-          ) : <button>Not Enough Funds!</button>
-        }
+        <p>
+          Your income multiplier is currently {this.state.multiplier.toFixed(2)}
+          . You can upgrade to {(this.state.multiplier + 0.01).toFixed(2)} for
+          $1,000,000
+        </p>
+        {this.state.balance >= 1000000 ? (
+          <button onClick={this.onUpgradeMultiplier}>Upgrade</button>
+        ) : (
+          <button>Not Enough Funds!</button>
+        )}
         <hr />
         <h1>Your Properties:</h1>
         <PropertyOwnershipList

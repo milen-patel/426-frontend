@@ -2,9 +2,11 @@ import axios from "axios";
 import React from "react";
 import { Redirect } from "react-router-dom";
 
+// Responsible for generating register page
 class Register extends React.Component {
   constructor() {
     super();
+    // Store the form information as state
     this.state = {
       nameField: "",
       passField: "",
@@ -13,27 +15,31 @@ class Register extends React.Component {
     };
   }
 
+  // If the user name changes, update state
   nameFieldChanged = (e) => {
     this.setState(() => ({
       nameField: e.target.value,
     }));
   };
 
+  // If the user email changes, update state
   emailFieldChanged = (e) => {
     this.setState(() => ({
       emailField: e.target.value,
     }));
   };
 
+  // If the user password changes, update state
   passwordFieldChanged = (e) => {
     this.setState(() => ({
       passField: e.target.value,
     }));
   };
 
+  // Handler when the user attempts to register
   onRegister = async () => {
-    //CASEY validate input
     try {
+      // Defer to backend
       await axios({
         method: "post",
         url: "https://backend-426.herokuapp.com/api/users/register",
@@ -46,16 +52,19 @@ class Register extends React.Component {
           password: this.state.passField,
         },
       });
+
+      // If we suceed, redirect user to authentication page
       this.setState(() => ({
         status: <Redirect to="/426-frontend/login"></Redirect>,
       }));
+
     } catch (err) {
+      // If we fail, show information to user
       this.setState(() => ({ status: err.toString() }));
     }
   };
 
   render() {
-    //CASEY: Display field requirements
     return (
       <div>
         {this.state.status}

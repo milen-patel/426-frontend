@@ -1,4 +1,6 @@
+// Responsible for generating the list of properties owned by the current user
 function PropertyOwnershipList(props) {
+  // If user owns no properties, stop
   if (!props.items) {
     return <h1>Buy Properties to Get Started...</h1>;
   }
@@ -20,7 +22,7 @@ function PropertyOwnershipList(props) {
             {e.ownerEmailT1 === props.email ? (
               <button
                 onClick={() => {
-                  props.onSell(props.email, e._id, 1)
+                  props.onSell(props.email, e._id, 1);
                 }}
               >
                 Sell
@@ -29,11 +31,12 @@ function PropertyOwnershipList(props) {
               ""
             )}
           </li>
-          <li>Tier 2: {e.ownerEmailT2 ? e.ownerEmailT2 : <em>Unowned</em>}
+          <li>
+            Tier 2: {e.ownerEmailT2 ? e.ownerEmailT2 : <em>Unowned</em>}
             {e.ownerEmailT2 === props.email ? (
               <button
                 onClick={() => {
-                  props.onSell(props.email, e._id, 2)
+                  props.onSell(props.email, e._id, 2);
                 }}
               >
                 Sell
@@ -41,13 +44,13 @@ function PropertyOwnershipList(props) {
             ) : (
               ""
             )}
-          
           </li>
-          <li>Tier 3: {e.ownerEmailT3 ? e.ownerEmailT3 : <em>Unowned</em>}
+          <li>
+            Tier 3: {e.ownerEmailT3 ? e.ownerEmailT3 : <em>Unowned</em>}
             {e.ownerEmailT3 === props.email ? (
               <button
                 onClick={() => {
-                  props.onSell(props.email, e._id, 3)
+                  props.onSell(props.email, e._id, 3);
                 }}
               >
                 Sell
@@ -55,13 +58,13 @@ function PropertyOwnershipList(props) {
             ) : (
               ""
             )}
-          
           </li>
-          <li>Tier 4: {e.ownerEmailT4 ? e.ownerEmailT4 : <em>Unowned</em>}
+          <li>
+            Tier 4: {e.ownerEmailT4 ? e.ownerEmailT4 : <em>Unowned</em>}
             {e.ownerEmailT4 === props.email ? (
               <button
                 onClick={() => {
-                  props.onSell(props.email, e._id, 4)
+                  props.onSell(props.email, e._id, 4);
                 }}
               >
                 Sell
@@ -69,13 +72,13 @@ function PropertyOwnershipList(props) {
             ) : (
               ""
             )}
-          
           </li>
-          <li>Tier 5: {e.ownerEmailT5 ? e.ownerEmailT5 : <em>Unowned</em>}
+          <li>
+            Tier 5: {e.ownerEmailT5 ? e.ownerEmailT5 : <em>Unowned</em>}
             {e.ownerEmailT5 === props.email ? (
               <button
                 onClick={() => {
-                  props.onSell(props.email, e._id, 5)
+                  props.onSell(props.email, e._id, 5);
                 }}
               >
                 Sell
@@ -83,7 +86,6 @@ function PropertyOwnershipList(props) {
             ) : (
               ""
             )}
-          
           </li>
         </ul>
         <hr />

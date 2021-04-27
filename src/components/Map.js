@@ -3,9 +3,11 @@ import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
 
+// Responsible for showing the map on the dashboard visualizing properties that are near the user
 class Map extends React.Component {
   constructor(props) {
     super(props);
+    // Store state for indicating if the user wants to move elsewhere on the map
     this.state = {
       walkLat: this.props.userLat,
       walkLon: this.props.userLon,
@@ -13,13 +15,17 @@ class Map extends React.Component {
     };
   }
 
+  // If the user clicks on the map, update state
   clickedMap = (e) => {
+    // Compute the cost to move to the target position
     const walkCost = this.distanceInmBetweenEarthCoordinates(
       this.props.userLat,
       this.props.userLon,
       e.lat,
       e.lng
     );
+
+    // Update state accordingly
     this.setState(() => ({
       walkLat: e.lat,
       walkLon: e.lng,
@@ -27,54 +33,58 @@ class Map extends React.Component {
     }));
   };
 
-
   onHover = (e) => {
     // Take the location and find the correct property
     const target = this.props.properties.find((c) => {
-      return ((c.location[0] === e[0]) && (c.location[1] === e[1]))
-    })
+      return c.location[0] === e[0] && c.location[1] === e[1];
+    });
 
     //Update state
     this.setState(() => ({
       hoverInfo: target,
     }));
-
-  }
+  };
 
   render() {
     let walkOffer;
-      walkOffer = (
-        <div>
-          <hr />
-          <strong>Latitude:</strong> {this.state.walkLat}
-          <br />
-          <strong>Longitude: </strong>{this.state.walkLon}
-          <br />
-          <strong>Cost: </strong>${this.state.walkCost}
-          <br />
-          {this.props.userBalance > this.state.walkCost ? (
-            <button
-              type="button"
-              onClick={async () => {
-                // Only call API if they are moving to a new location
-                if (this.state.walkCost === 0) {
-                  return;
-                }
+    walkOffer = (
+      <div>
+        <hr />
+        <strong>Latitude:</strong> {this.state.walkLat}
+        <br />
+        <strong>Longitude: </strong>
+        {this.state.walkLon}
+        <br />
+        <strong>Cost: </strong>${this.state.walkCost}
+        <br />
+        {this.props.userBalance > this.state.walkCost ? (
+          <button
+            type="button"
+            onClick={async () => {
+              // Only call API if they are moving to a new location
+              if (this.state.walkCost === 0) {
+                return;
+              }
 
-                if (await this.props.moveHandler(this.state.walkLat, this.state.walkLon)) {
-                  // Now it costs no money to move where we are
-                  this.setState(() => ({walkCost: 0}));
-                }
-              }}
-            >
-              Move
-            </button>
-          ) : (
-            <button type="button">Insufficient Funds</button>
-          )}
-          <hr />
-        </div>
-      );
+              if (
+                await this.props.moveHandler(
+                  this.state.walkLat,
+                  this.state.walkLon
+                )
+              ) {
+                // Now it costs no money to move where we are
+                this.setState(() => ({ walkCost: 0 }));
+              }
+            }}
+          >
+            Move
+          </button>
+        ) : (
+          <button type="button">Insufficient Funds</button>
+        )}
+        <hr />
+      </div>
+    );
 
     let propertyVisuals;
     if (this.props.properties) {
@@ -84,7 +94,7 @@ class Map extends React.Component {
           name={e.name}
           lat={e.location[0]}
           lng={e.location[1]}
-          key={e.location[0]+""+e.location[1]}
+          key={e.location[0] + "" + e.location[1]}
           onHover={this.onHover}
         />
       ));
@@ -101,7 +111,7 @@ class Map extends React.Component {
           <h5>Value: {this.state.hoverInfo.value}</h5>
           <h5>Income: {this.state.hoverInfo.hourlyIncome}</h5>
         </div>
-      )
+      );
     }
 
     return (

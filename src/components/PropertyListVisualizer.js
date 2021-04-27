@@ -1,10 +1,14 @@
 import React from "react";
 
+// Responsible for showing the user a list of nearby properties
 class PropertyListVisualizer extends React.Component {
+  // Helper function for showing purchase buttons under each property tier
   generateBuyButton(id, tier, cost) {
+    // Ensure that the user has sufficient funds
     if (cost > this.props.balance) {
       return <button>Not enough $$$</button>;
     }
+
     return (
       <button
         onClick={() => {
@@ -16,15 +20,18 @@ class PropertyListVisualizer extends React.Component {
     );
   }
 
+  // Hepler for parsing numbers into a dollar readable format
   numberWithCommas(x) {
     if (!x) {
       return "";
     }
     x = parseFloat(x.toFixed(2));
-    return "$"+x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  // Function for generating the entire list to show 
   generateEntries() {
+    // If we have no properties, or the component just loaded...
     if (!this.props.items || this.props.items.length === 0) {
       return (
         <div>
@@ -32,7 +39,6 @@ class PropertyListVisualizer extends React.Component {
         </div>
       );
     }
-    
 
     return this.props.items.map((e) => {
       return (
