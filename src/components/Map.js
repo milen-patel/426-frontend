@@ -3,6 +3,7 @@ import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
 import "./map.css"
+import axios from "axios";
 
 // Responsible for showing the map on the dashboard visualizing properties that are near the user
 class Map extends React.Component {
@@ -17,7 +18,7 @@ class Map extends React.Component {
   }
 
   // If the user clicks on the map, update state
-  clickedMap = (e) => {
+  clickedMap = async (e) => {
     // Compute the cost to move to the target position
     const walkCost = this.distanceInmBetweenEarthCoordinates(
       this.props.userLat,
@@ -26,11 +27,15 @@ class Map extends React.Component {
       e.lng
     );
 
+    // Get address
+    const addy = await axios(`http://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_REVERSE_API_KEY}&query=${e.lat},${e.lng}`)
+
     // Update state accordingly
     this.setState(() => ({
       walkLat: e.lat,
       walkLon: e.lng,
       walkCost: walkCost.toFixed(2),
+      address: addy.data.data[0].label,
     }));
   };
 
@@ -54,6 +59,7 @@ class Map extends React.Component {
         <strong class = "ll">Latitude: {this.state.walkLat}</strong>
         <strong class = "ll">Longitude: 
         {this.state.walkLon}
+        {this.state.address ? <p>Address: {this.state.address}</p> : ""}
         </strong>
         <br />
         <strong class = "ll">Cost: ${this.state.walkCost}</strong>
