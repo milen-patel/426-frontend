@@ -2,6 +2,7 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import PropertyOnMap from "./PropertyOnMap";
 import UserOnMap from "./UserOnMap";
+import "./map.css"
 
 // Responsible for showing the map on the dashboard visualizing properties that are near the user
 class Map extends React.Component {
@@ -58,8 +59,10 @@ class Map extends React.Component {
         <strong>Cost: </strong>${this.state.walkCost}
         <br />
         {this.props.userBalance > this.state.walkCost ? (
-          <button
-            type="button"
+           <button
+           type="button"
+           class="btn btn-outline-success btn-rounded mbtn"
+           data-mdb-ripple-color="dark"
             onClick={async () => {
               // Only call API if they are moving to a new location
               if (this.state.walkCost === 0) {
@@ -80,7 +83,10 @@ class Map extends React.Component {
             Move
           </button>
         ) : (
-          <button type="button">Insufficient Funds</button>
+          <button
+          type="button"
+          class="btn btn-outline-danger btn-rounded mbtn"
+          data-mdb-ripple-color="dark">Insufficient Funds</button>
         )}
         <hr />
       </div>
@@ -118,7 +124,8 @@ class Map extends React.Component {
       <div>
         {walkOffer}
         {hoverVisuals}
-        <div style={{ width: "500px", height: "500px" }}>
+        
+        <div style={{ width: "500px", height: "500px", marginLeft: "425px", border: "15px solid green", borderRadius: "15px" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -137,6 +144,7 @@ class Map extends React.Component {
             />
           </GoogleMapReact>
         </div>
+        
       </div>
     );
   }

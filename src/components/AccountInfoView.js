@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import { token } from "../token";
 import axios from "axios";
 import PropertyOwnershipList from "./PropertyOwnershipList";
+import "./accountinfoview.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Response for loading the personal account information pages
 class AccountInfoView extends React.Component {
@@ -177,12 +179,21 @@ class AccountInfoView extends React.Component {
     }
 
     return (
-      <div>
-        <p>Welcome</p>
-        <button onClick={this.onRedirectRequest}>Go Back to Dashboard</button>
-        <button onClick={this.onLeaderboardRequest}>Go to Leaderboard</button>
+      <div class = "ml">
+        
+        <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark" 
+          onClick={this.onRedirectRequest}>Go Back to Dashboard</button>
+         <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark"
+          onClick={this.onLeaderboardRequest}>Go to Leaderboard</button>
         <hr />
-        <h1>Account Information:</h1>
+        <div>
+        <h1 class = "ml">Account Information:</h1>
         <ul>
           <li>
             <strong>Email: </strong>
@@ -209,7 +220,7 @@ class AccountInfoView extends React.Component {
             {this.numberWithCommas(this.state.experience)}
           </li>
           <li>
-            <strong>multiplier: </strong>
+            <strong>Multiplier: </strong>
             {this.state.multiplier.toFixed(2)}
           </li>
           <li>
@@ -226,36 +237,56 @@ class AccountInfoView extends React.Component {
           </li>
         </ul>
         <hr />
-        <h1>Upgrades</h1>
-        <p>
+        <h1 class = "ml">Upgrades</h1>
+        <p class = "ml">
           You can currently own up to {this.state.maxProperties} properties and
           you currently own {this.state.numProperties}. You can upgrade to{" "}
           {2 * this.state.maxProperties} slots for{" "}
           {this.numberWithCommas(this.state.maxProperties ** 3)}
         </p>
         {this.state.balance >= this.state.maxProperties ** 3 ? (
-          <button onClick={this.onUpgrade}>Upgrade</button>
+          <button
+          type="button"
+          class="btn btn-outline-success btn-rounded ml ms mbuttons"
+          data-mdb-ripple-color="dark"
+          onClick={this.onUpgrade}>Upgrade</button>
         ) : (
-          <button>Not Enough funds!</button>
+          <button
+            type="button"
+            class="btn btn-outline-danger btn-rounded ml ms mbuttons"
+            data-mdb-ripple-color="dark">Not Enough funds!</button>
         )}
-        <p>
+        <p class = "ml">
           Your income multiplier is currently {this.state.multiplier.toFixed(2)}
           . You can upgrade to {(this.state.multiplier + 0.01).toFixed(2)} for
           $1,000,000
         </p>
         {this.state.balance >= 1000000 ? (
-          <button onClick={this.onUpgradeMultiplier}>Upgrade</button>
+          <button
+          type="button"
+          class="btn btn-outline-success btn-rounded ml ms mbuttons"
+          data-mdb-ripple-color="dark"
+          onClick={this.onUpgradeMultiplier}>Upgrade</button>
         ) : (
-          <button>Not Enough Funds!</button>
+          <button
+            type="button"
+            class="btn btn-outline-danger btn-rounded ml ms mbuttons"
+            data-mdb-ripple-color="dark">Not Enough Funds!</button>
         )}
         <hr />
-        <h1>Your Properties:</h1>
+        </div>
+        <h1 class = "ml">Your Properties:</h1>
+        <div class = "wrapper">
+
         <PropertyOwnershipList
           items={this.state.properties}
           email={this.state.email}
           onSell={this.onSell.bind(this)}
         />
-        <hr />
+        
+        
+        </div>
+        
       </div>
     );
   }

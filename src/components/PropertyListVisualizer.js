@@ -1,16 +1,22 @@
 import React from "react";
-
+import "./propertylistvisualizer.css"
 // Responsible for showing the user a list of nearby properties
 class PropertyListVisualizer extends React.Component {
   // Helper function for showing purchase buttons under each property tier
   generateBuyButton(id, tier, cost) {
     // Ensure that the user has sufficient funds
     if (cost > this.props.balance) {
-      return <button>Not enough $$$</button>;
+      return <button
+      type="button"
+      class="btn btn-outline-danger btn-rounded nebtn"
+      data-mdb-ripple-color="dark">Not enough $$$</button>;
     }
 
     return (
       <button
+      type="button"
+      class="btn btn-outline-success btn-rounded pbtn"
+      data-mdb-ripple-color="dark"
         onClick={() => {
           this.props.handler(id, tier);
         }}
@@ -42,8 +48,8 @@ class PropertyListVisualizer extends React.Component {
 
     return this.props.items.map((e) => {
       return (
-        <div key={e._id}>
-          <h1>{e.name}</h1>
+        <div class = "card ct" key={e._id}>
+          <h1 class = "tm">{e.name}</h1>
           <h5>Hourly Income: {e.hourlyIncome}</h5>
           <h5>Base Value: {e.value}</h5>
           <h5>Level:{e.level} </h5>
@@ -80,7 +86,7 @@ class PropertyListVisualizer extends React.Component {
                 : this.generateBuyButton(e._id, 5, e.value ** 5)}
             </li>
           </ul>
-          <hr />
+          
         </div>
       );
     });

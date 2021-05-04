@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+}
+.tbutton{
+    width: 650px;
+    height: 50px;
+    left: 70px !important;
+    margin-bottom: 10px;
+    
+  }
+
+  .ct{
+    color: rgb(199, 196, 196);
+    margin-left: auto;
+    margin-right: auto
+  
+  }
+  .ml{
+    text-align: center;
+    color: rgb(206, 199, 199);
+  }
+  .mt{
+    margin-top: 15px;
+  } 
+  .map{
+      text-align: center;
+      align: center;
+      margin-left: auto;
+      margin-right: auto;
+  }

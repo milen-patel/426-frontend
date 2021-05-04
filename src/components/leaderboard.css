@@ -1,0 +1,48 @@
+.body{
+    background-color: black;
+}
+.pad{
+    padding: 30px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.card {
+    
+    height: 200px;
+    width: 200px;
+    background-color: #091f03;
+    border-radius: 10px;
+    display: flex;
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    text-align: center;
+    left: 40px;
+  }
+  .c2{
+        
+    height: 200px !important;
+    width: 200px !important;
+    background-color: #17141d;
+    border-radius: 10px !important; 
+    display: flex;
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    text-align: center !important;
+    left: 40px!important; 
+  }
+ 
+    .ct{
+    color: rgb(199, 196, 196);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  
+  }
+  .tbuttons{
+    width: 600px;
+    height: 50px;
+    margin-left: 15px;
+  }
+  .hc{
+      margin-top: 5px !important;
+  }

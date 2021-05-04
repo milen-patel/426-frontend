@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { token } from "../token";
 import { Redirect } from "react-router-dom";
+import "./leaderboard.css"
 
 // Responsible for showing the leaderboard of the top 10 players, ranked by lifetime earnings
 class Leaderboard extends React.Component {
@@ -64,8 +65,11 @@ class Leaderboard extends React.Component {
     }
 
     return (
-      <div>
+      <div class = "pad">
         <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark" 
           onClick={() => {
             this.setState(() => ({ redirectDashboard: true }));
           }}
@@ -73,27 +77,32 @@ class Leaderboard extends React.Component {
           Dashboard
         </button>
         <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark" 
           onClick={() => {
             this.setState(() => ({ redirectAccountView: true }));
           }}
         >
           Account View
         </button>
+        <hr />
+        <h1 class = "ct">Leaderboard</h1>
         <ol>
           {this.state.people
             ? this.state.people.map((p) => {
                 return (
-                  <li key={p.name + p.experience}>
-                    <div>
-                      <strong>Name:</strong> {p.name}
+                  <div class = 'card c2'>
+                  <li class = "ct hc" key={p.name + p.experience}>
+                      <h3 class = "hc">{p.name}</h3>
                       <br />
                       <strong>Properties Owned:</strong> {p.numProperties}
                       <br />
                       <strong>Lifetime Earnings:</strong>{" "}
                       {this.numberWithCommas(p.experience)}
-                      <hr />
-                    </div>
+                      
                   </li>
+                  </div>
                 );
               })
             : "No Players Found in Database..."}

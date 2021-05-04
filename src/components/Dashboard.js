@@ -4,6 +4,7 @@ import axios from "axios";
 import { token } from "../token";
 import Map from "./Map";
 import PropertyListVisualizer from "./PropertyListVisualizer";
+import "./dashboard.css"
 
 // Responsible for rendering the dashboard shown to the user after authentication
 class Dashboard extends React.Component {
@@ -189,7 +190,8 @@ class Dashboard extends React.Component {
           <strong>Balance:</strong>
           {this.numberWithCommas(this.state.balance)}
         </p>
-        <Map
+        <div class = "map ct">
+        <Map 
           userLat={this.state.lat}
           userLon={this.state.lon}
           properties={this.state.propertiesToShow}
@@ -197,14 +199,18 @@ class Dashboard extends React.Component {
           moveHandler={this.makeMove.bind(this)}
           focusHandler={this.makePurchase.bind(this)}
         />
+        </div>
         <div>
           <hr />
-          <p>
+          <h3 class = "ct">
             {this.state.propertiesToShow
               ? `Showing ${this.state.propertiesToShow.length} properties`
               : "Showing no properties"}
-          </p>
+          </h3>
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton "
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -216,6 +222,9 @@ class Dashboard extends React.Component {
             Sort by Value Ascending
           </button>
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -228,6 +237,9 @@ class Dashboard extends React.Component {
           </button>
           <br />
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -239,6 +251,9 @@ class Dashboard extends React.Component {
             Sort by Income Ascending
           </button>
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -251,6 +266,9 @@ class Dashboard extends React.Component {
           </button>
           <br />
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -262,6 +280,9 @@ class Dashboard extends React.Component {
             Sort by Level Ascending
           </button>
           <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -272,6 +293,7 @@ class Dashboard extends React.Component {
           >
             Sort by Level Descending
           </button>
+          
           <PropertyListVisualizer
             items={vals}
             balance={this.state.balance}
