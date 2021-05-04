@@ -28,14 +28,14 @@ class Map extends React.Component {
     );
 
     // Get address
-    const addy = await axios(`https://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_REVERSE_API_KEY}&query=${e.lat},${e.lng}`)
+    const addy = await axios(`https://api.opencagedata.com/geocode/v1/json?key=${process.env.REACT_APP_REVERSE_API_KEY}&pretty=1&q=${e.lat}%2C${e.lng}`)
 
     // Update state accordingly
     this.setState(() => ({
       walkLat: e.lat,
       walkLon: e.lng,
       walkCost: walkCost.toFixed(2),
-      address: addy.data.data[0].label,
+      address: addy.data.results[0].formatted,
     }));
   };
 
