@@ -55,7 +55,7 @@ body {
 }
 
 .pbtn{
-    width: 130px;
+    width: auto;
     height: 17px;
     font-size: 10px !important;
     margin-left: 15px;

@@ -171,11 +171,18 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <h1>Welcome: A game by Casey S. and Milen P.</h1>
+        <h1 class = "ll cn">A game by Casey S. and Milen P.</h1>
         {this.state.redirect}
         {this.state.goToLeaderboard}
-        <button onClick={this.changePage}>Go to Account View</button>
         <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark" 
+          onClick={this.changePage}>Go to Account View</button>
+        <button
+          type="button"
+          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark"
           onClick={() => {
             this.setState(() => ({
               goToLeaderboard: (
@@ -186,9 +193,10 @@ class Dashboard extends React.Component {
         >
           Go to Leaderboard
         </button>
-        <p>
-          <strong>Balance:</strong>
-          {this.numberWithCommas(this.state.balance)}
+        <hr />
+        <p class = "cn">
+          <strong class = "ll cn">Balance:  {this.numberWithCommas(this.state.balance)}
+          </strong>
         </p>
         <div class = "map ct">
         <Map 
@@ -233,7 +241,7 @@ class Dashboard extends React.Component {
               }));
             }}
           >
-            Sort by Value Ascending
+            Sort by Value Descending
           </button>
           <br />
           <button

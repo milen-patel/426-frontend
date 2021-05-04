@@ -51,12 +51,12 @@ class Map extends React.Component {
     walkOffer = (
       <div>
         <hr />
-        <strong>Latitude:</strong> {this.state.walkLat}
-        <br />
-        <strong>Longitude: </strong>
+        <strong class = "ll">Latitude: {this.state.walkLat}</strong>
+        <strong class = "ll">Longitude: 
         {this.state.walkLon}
+        </strong>
         <br />
-        <strong>Cost: </strong>${this.state.walkCost}
+        <strong class = "ll">Cost: ${this.state.walkCost}</strong>
         <br />
         {this.props.userBalance > this.state.walkCost ? (
            <button
@@ -125,7 +125,7 @@ class Map extends React.Component {
         {walkOffer}
         {hoverVisuals}
         
-        <div style={{ width: "500px", height: "500px", marginLeft: "425px", border: "15px solid green", borderRadius: "15px" }}>
+        <div style={{ width: "500px", height: "500px", marginLeft: "auto", marginRight: "auto", border: "15px solid green", borderRadius: "15px" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
