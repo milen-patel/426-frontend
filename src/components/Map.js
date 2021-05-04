@@ -28,7 +28,7 @@ class Map extends React.Component {
     );
 
     // Get address
-    const addy = await axios(`http://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_REVERSE_API_KEY}&query=${e.lat},${e.lng}`)
+    const addy = await axios(`https://api.positionstack.com/v1/reverse?access_key=${process.env.REACT_APP_REVERSE_API_KEY}&query=${e.lat},${e.lng}`)
 
     // Update state accordingly
     this.setState(() => ({
