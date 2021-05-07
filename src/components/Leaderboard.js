@@ -56,12 +56,12 @@ class Leaderboard extends React.Component {
   render() {
     // Handle the case where the user clicks the account view button
     if (this.state.redirectAccountView) {
-      return <Redirect to="/426-frontend/personal"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/personal"></Redirect>;
     }
 
     // Handle the case where the user clicks the dashboard view button
     if (this.state.redirectDashboard) {
-      return <Redirect to="/426-frontend/dashboard"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/dashboard"></Redirect>;
     }
 
     return (

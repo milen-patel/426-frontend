@@ -52,7 +52,7 @@ class Login extends React.Component {
 
       // Update state so we redirect to the dashboard view
       this.setState(() => ({
-        status: <Redirect to="/426-frontend/dashboard"></Redirect>,
+        status: <Redirect to="/Earth3-Frontend/dashboard"></Redirect>,
       }));
     } catch (err) {
       // If there was an error authenticating, show it to the user 

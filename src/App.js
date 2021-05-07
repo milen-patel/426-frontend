@@ -20,7 +20,7 @@ function App() {
 
     return (
       <Switch>
-        <Route exact path="/426-frontend/">
+        <Route exact path="/Earth3-Frontend/">
           <div class = 'container'>
             <div class ='row-md-6'>
               <div class ='col-md-6'>
@@ -28,10 +28,10 @@ function App() {
                   <form>
                     <h1 class="display-3">Welcome to the Game</h1>
                     <button  onClick={() => {
-                      history.push("/426-frontend/login")
+                      history.push("/Earth3-Frontend/login")
                     }}>Move to Login</button>
                     <button  onClick={() => {
-                      history.push("/426-frontend/register")
+                      history.push("/Earth3-Frontend/register")
                     }}>Move to Register</button>
                   </form>
                 </div>
@@ -39,19 +39,19 @@ function App() {
             </div>
           </div>
         </Route>
-        <Route path="/426-frontend/login">
+        <Route path="/Earth3-Frontend/login">
           <Login />
         </Route>
-        <Route path="/426-frontend/register">
+        <Route path="/Earth3-Frontend/register">
           <Register />
         </Route>
-        <Route path="/426-frontend/personal">
+        <Route path="/Earth3-Frontend/personal">
           <AccountInfoView />
         </Route>
-        <Route path="/426-frontend/dashboard">
+        <Route path="/Earth3-Frontend/dashboard">
           <Dashboard />
         </Route>
-        <Route path="/426-frontend/leaderboard">
+        <Route path="/Earth3-Frontend/leaderboard">
           <Leaderboard />
         </Route>
       </Switch>

@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
   changePage = () => {
     // Update state so we render a Redirect tag
     this.setState(() => ({
-      redirect: <Redirect to="/426-frontend/personal"></Redirect>,
+      redirect: <Redirect to="/Earth3-Frontend/personal"></Redirect>,
     }));
   };
 
@@ -164,7 +164,7 @@ class Dashboard extends React.Component {
   render() {
     // Validate token
     if (!token.val) {
-      return <Redirect to="/426-frontend/login"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/login"></Redirect>;
     }
 
     let vals = this.state.propertiesToShow;
@@ -186,7 +186,7 @@ class Dashboard extends React.Component {
           onClick={() => {
             this.setState(() => ({
               goToLeaderboard: (
-                <Redirect to="/426-frontend/leaderboard"></Redirect>
+                <Redirect to="/Earth3-Frontend/leaderboard"></Redirect>
               ),
             }));
           }}

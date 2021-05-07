@@ -55,7 +55,7 @@ class Register extends React.Component {
 
       // If we suceed, redirect user to authentication page
       this.setState(() => ({
-        status: <Redirect to="/426-frontend/login"></Redirect>,
+        status: <Redirect to="/Earth3-Frontend/login"></Redirect>,
       }));
 
     } catch (err) {

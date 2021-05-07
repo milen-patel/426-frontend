@@ -165,17 +165,17 @@ class AccountInfoView extends React.Component {
   render() {
     // Validate token
     if (!token.val) {
-      return <Redirect to="/426-frontend/login"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/login"></Redirect>;
     }
 
     // If the user has requested to go back to the dashboard
     if (this.state.redirect) {
-      return <Redirect to="/426-frontend/dashboard"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/dashboard"></Redirect>;
     }
 
     // If user wants to visit leaderboard
     if (this.state.redirectLeader) {
-      return <Redirect to="/426-frontend/leaderboard"></Redirect>;
+      return <Redirect to="/Earth3-Frontend/leaderboard"></Redirect>;
     }
 
     return (

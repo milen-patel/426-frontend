@@ -1,7 +1,7 @@
 {
   "name": "finalproject",
   "version": "0.1.0",
-  "homepage": "http://milen-patel.github.io/426-frontend",
+  "homepage": "http://milen-patel.github.io/Earth3-Frontend",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
