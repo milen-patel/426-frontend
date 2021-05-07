@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Earth3-Frontend/static/css/main.e320b25b.chunk.css",
-    "main.js": "/Earth3-Frontend/static/js/main.96f8dab7.chunk.js",
-    "main.js.map": "/Earth3-Frontend/static/js/main.96f8dab7.chunk.js.map",
+    "main.js": "/Earth3-Frontend/static/js/main.43af8576.chunk.js",
+    "main.js.map": "/Earth3-Frontend/static/js/main.43af8576.chunk.js.map",
     "runtime-main.js": "/Earth3-Frontend/static/js/runtime-main.9e916e6c.js",
     "runtime-main.js.map": "/Earth3-Frontend/static/js/runtime-main.9e916e6c.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/Earth3-Frontend/static/css/2.4c97ca4f.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.2ef6be11.chunk.js",
     "static/css/main.e320b25b.chunk.css",
-    "static/js/main.96f8dab7.chunk.js"
+    "static/js/main.43af8576.chunk.js"
   ]
 }
