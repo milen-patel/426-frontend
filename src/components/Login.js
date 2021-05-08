@@ -71,9 +71,9 @@ class Login extends React.Component {
           muted
         ></video>
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card">
+          <div class="row-md-5">
+            <div class="col-md-6 ">
+              <div class="c3">
                 {this.state.status}
                 {this.state.status ? <br /> : ""}
                 <form class="box">

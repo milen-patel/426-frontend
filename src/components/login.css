@@ -1,5 +1,5 @@
 body {
-   
+   background-color: #191919;
 }
 video {
     object-fit: cover;
@@ -10,34 +10,43 @@ video {
     left: 0;
   }
 
-.card {
-    margin-bottom: 20px;
-    border: none
-}
+
+
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
 
 .box {
-    width: 500px;
-    padding: 40px;
+    width: 65%;
+    height: 400px;
+    padding: 4%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #191919;
-    ;
+    top: 100px;
+    left: 67%;
+    background: #1c1d1c;
     text-align: center;
     transition: 0.25s;
-    margin-top: 100px
+    margin-top: 10%;
+    border: 3px;
+    border-radius: 7%;
+    
 }
 
 .box input[type="text"],
 .box input[type="password"] {
     border: 0;
     background: none;
+    background-color: none;
     display: block;
-    margin: 20px auto;
+    margin: 5% auto;
     text-align: center;
     border: 2px solid #3498db;
-    padding: 10px 10px;
-    width: 250px;
+    padding: 3%;
+    width: 65%;
     outline: none;
     color: rgb(255, 255, 255);
     border-radius: 24px;
@@ -52,18 +61,21 @@ video {
 
 .box input[type="text"]:focus,
 .box input[type="password"]:focus {
-    width: 300px;
-    border-color: #2ecc71
+    width: 73%;
+    border-color: #2ecc71;
+    color: white;
 }
 
 .box input[type="submit"] {
     border: 0;
+    background-color: none;
     background: none;
+    background-color: none;
     display: block;
-    margin: 20px auto;
+    margin: auto;
     text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
+    border: 3% solid #2ecc71;
+    padding: 3% 4%;
     outline: none;
     color: white;
     border-radius: 24px;

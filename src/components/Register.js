@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Redirect } from "react-router-dom";
+import "./register.css";
 
 // Responsible for generating register page
 class Register extends React.Component {
@@ -66,6 +67,50 @@ class Register extends React.Component {
 
   render() {
     return (
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="c3">
+            {this.state.status}
+            {this.state.status ? <br /> : ""}
+            <form class="box eh">
+              <h1>Register</h1>
+              <p class="text-muted">
+                {" "}
+                Please enter your Name, Email, and Password!
+              </p>
+              <input
+                type="text"
+                placeholder="Name"
+                onChange={this.nameFieldChanged}
+              ></input>
+              <br />
+              <input
+                type="text"
+                placeholder="Email"
+                onChange={this.emailFieldChanged}
+              ></input>
+              <br/>
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={this.passwordFieldChanged}
+              ></input>
+              <br />
+              <button
+                type="button"
+                class="btn btn-outline-success btn-rounded"
+                data-mdb-ripple-color="dark"
+                onClick={this.onRegister}
+              >
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      /*
       <div>
         {this.state.status}
         {this.state.status ? <br /> : ""}
@@ -83,6 +128,8 @@ class Register extends React.Component {
           Register
         </button>
       </div>
+      */
+
     );
   }
 }

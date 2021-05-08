@@ -2,11 +2,11 @@ body {
     background-color: black;
 }
 .tbutton{
-    width: 650px;
+    width: 48%;
     height: 50px;
-    left: 70px !important;
+    left: 3% !important;
     margin-bottom: 10px;
-    margin-left: 15px;
+    margin-left: 1%;
     
   }
 
@@ -24,7 +24,7 @@ body {
     color: rgb(206, 199, 199);
   }
   .mt{
-    margin-top: 15px;
+    margin-top: 10px;
   } 
   .map{
       text-align: center;

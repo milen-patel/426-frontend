@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard";
 import Leaderboard from "./components/Leaderboard";
 import Homepage from "./components/Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./app.css";
+
 //import Jumbotron from 'react-bootstrap/Jumbotron'
 
 

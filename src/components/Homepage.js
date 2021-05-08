@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import "./homepage.css"
 
 class Homepage extends React.Component {
   constructor(props) {

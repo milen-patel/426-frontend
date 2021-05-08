@@ -2,33 +2,33 @@
     background-color: black;
 }
 .pad{
-    padding: 30px;
+    padding: 2%;
     color: rgb(255, 255, 255);
     text-align: center;
 }
 .card {
     
     height: 200px;
-    width: 200px;
+    width: 17%;
     background-color: #091f03;
-    border-radius: 10px;
+    border-radius: 7%;
     display: flex;
   /*   margin-left: -50px; */
     transition: 0.4s ease-out;
     text-align: center;
-    left: 40px;
+    left: 2%px;
   }
   .c2{
         
     height: 200px !important;
-    width: 200px !important;
+    width: 17% !important;
     background-color: #17141d;
-    border-radius: 10px !important; 
+    border-radius: 7% !important; 
     display: flex;
   /*   margin-left: -50px; */
     transition: 0.4s ease-out;
     text-align: center !important;
-    left: 40px!important; 
+    left: 2%!important; 
   }
  
     .ct{
@@ -39,9 +39,9 @@
   
   }
   .tbuttons{
-    width: 600px;
+    width: 48%;
     height: 50px;
-    margin-left: 15px;
+    margin-left: 2%;
   }
   .hc{
       margin-top: 5px !important;
