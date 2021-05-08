@@ -172,7 +172,6 @@ class Dashboard extends React.Component {
 
     return (
       <div class = "cw">
-        <h1 class = "ll cn">Earth 3.0</h1>
         {this.state.redirect}
         {this.state.goToLeaderboard}
         <button

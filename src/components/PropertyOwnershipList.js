@@ -19,12 +19,13 @@ function PropertyOwnershipList(props) {
         <h7 class = "ct">Base Value: {e.value}</h7>
         <h7 class = "ct">Level:{e.level} </h7>
         <h4 class = "ct">Owners:</h4>
-        <ul class = "ct c">
+        <ul class = "ct c ">
         
         <li class = "ct mg">
+          
           Tier 1:  {e.ownerEmailT1 ? e.ownerEmailT1 : <em>Unowned  </em>}
           {e.ownerEmailT1 === props.email ?(
-            
+          
             <button
             type="button"
             class="btn btn-outline-warning btn-rounded sbtn"
@@ -56,7 +57,7 @@ function PropertyOwnershipList(props) {
             ""
           )}
         </li>
-        <li class = "ct mg">
+        <li class = "ct mg ">
           Tier 3: {e.ownerEmailT3 ? e.ownerEmailT3 : <em>Unowned</em>}
           {e.ownerEmailT3 === props.email ? (
              <button

@@ -62,7 +62,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div id="wrapperVid">
+      <div class="im">
         <div class="container">
           <div class="row-md-5">
             <div class="col-md-6 ">

@@ -67,7 +67,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div class="container">
+      <div class="im">
       <div class="row">
         <div class="col-md-6">
           <div class="c3">

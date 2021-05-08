@@ -118,8 +118,8 @@ class Map extends React.Component {
       //<PropertyListVisualizer items={[this.state.hoverInfo]} handler={this.props.focusHandler} />
       //</div>);
       hoverVisuals = (
-        <div>
-          <h5>Name: {this.state.hoverInfo.name}</h5>
+        <div class = "locInfo">
+          <h3>{this.state.hoverInfo.name}</h3>
           <h5>Value: {this.state.hoverInfo.value}</h5>
           <h5>Income: {this.state.hoverInfo.hourlyIncome}</h5>
         </div>
@@ -131,7 +131,7 @@ class Map extends React.Component {
         {walkOffer}
         {hoverVisuals}
         
-        <div style={{ width: "500px", height: "500px", marginLeft: "auto", marginRight: "auto", border: "15px solid green", borderRadius: "15px" }}>
+        <div style={{ width: "800px", height: "500px", marginLeft: "auto", marginRight: "auto", border: "15px solid #032544", borderRadius: "15px" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

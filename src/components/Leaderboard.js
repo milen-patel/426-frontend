@@ -89,12 +89,13 @@ class Leaderboard extends React.Component {
         </button>
         <hr />
         <h1 class = "ct">Leaderboard</h1>
-        <ol>
+        <ol class = "list">
           {this.state.people
             ? this.state.people.map((p) => {
                 return (
-                  <div class = 'card c2'>
+                  <div class = 'card c2 ct'>
                   <li class = "ct hc" key={p.name + p.experience}>
+                    <hr class = "hr50"/>
                       <h3 class = "hc">{p.name}</h3>
                       <br />
                       <strong>Properties Owned:</strong> {p.numProperties}
@@ -106,7 +107,7 @@ class Leaderboard extends React.Component {
                   </div>
                 );
               })
-            : "No Players Found in Database..."}
+            : "Loading..."}
         </ol>
       </div>
     );

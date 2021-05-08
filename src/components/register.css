@@ -1,5 +1,5 @@
 body {
-    background-color: #191919;
+    
  }
  video {
      object-fit: cover;
@@ -10,16 +10,21 @@ body {
      left: 0;
    }
  
-
+.im{
+    background-image: url('https://media.giphy.com/media/VI2UC13hwWin1MIfmi/giphy.gif');
+    background-size: cover;
+    height: 100vh;
+    padding:50px;
+    margin:0;
+}
  
    .box {
     width: 65%;
-    
     padding: 4%;
     position: absolute;
     top: 100px;
     left: 67%;
-    background: #1c1d1c;
+    background: black;
     text-align: center;
     transition: 0.25s;
     margin-top: 10%;

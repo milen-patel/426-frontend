@@ -1,0 +1,75 @@
+.home{
+    color: rgb(199, 196, 196);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
+  
+  }
+
+  .im{
+    background-image: url('https://media.giphy.com/media/VI2UC13hwWin1MIfmi/giphy.gif');
+    background-size: cover;
+    height: 100vh;
+    padding:50px;
+    margin:0;
+}
+body{
+    background-color: black;
+}
+.font{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    background-color: black;
+    width: 30%;
+    margin: auto;
+ 
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.loginregister{
+    width: 30%;
+    height: 50px;
+    left: 3% !important;
+    margin-bottom: 0px;
+    margin-left: 1%;
+    color: white;
+    border: none;
+    background-color: black;
+    border-radius:50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    
+}
+.bottom{
+    background-color: black;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 31%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  }
+  .htp{
+    width: 30%;
+    height: 50px;
+    left: 3% !important;
+    margin-bottom: 10px;
+    margin-left: 1%;
+    color: white;
+    border: none;
+    background-color: black;
+    border-radius:50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+  }
+.htpt{
+    background-color: black;
+    border-radius: 0px;
+    
+    margin-top: 5%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+}
+
+
+
+ 

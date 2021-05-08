@@ -179,7 +179,7 @@ class AccountInfoView extends React.Component {
     }
 
     return (
-      <div class = "ml">
+      <div class = "ml back">
         
         <button
           type="button"
