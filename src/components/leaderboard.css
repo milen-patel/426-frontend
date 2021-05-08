@@ -2,7 +2,7 @@
     background-color: black;
 }
 .pad{
-    padding: 2%;
+    padding: 0.5%;
     color: rgb(255, 255, 255);
     text-align: center;
 }
@@ -28,9 +28,12 @@
   
   }
   .tbuttons{
-    width: 48%;
+    width: 40%;
     height: 50px;
-    margin-left: 2%;
+    left: 3% !important;
+    margin-bottom: 10px;
+    margin-left: 1%;
+    
   }
   .hc{
       margin-top: 5px !important;

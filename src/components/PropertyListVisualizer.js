@@ -54,7 +54,7 @@ class PropertyListVisualizer extends React.Component {
           <h5>Base Value: {e.value}</h5>
           <h5>Level:{e.level} </h5>
           <h5>Owners:</h5>
-          <ul>
+          <ul class = "c ct">
             <li>
               Tier 1:{" "}
               {e.ownerEmailT1

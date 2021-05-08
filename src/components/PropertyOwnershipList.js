@@ -19,7 +19,7 @@ function PropertyOwnershipList(props) {
         <h7 class = "ct">Base Value: {e.value}</h7>
         <h7 class = "ct">Level:{e.level} </h7>
         <h4 class = "ct">Owners:</h4>
-        <ul class = "ct">
+        <ul class = "ct c">
         
         <li class = "ct mg">
           Tier 1:  {e.ownerEmailT1 ? e.ownerEmailT1 : <em>Unowned  </em>}

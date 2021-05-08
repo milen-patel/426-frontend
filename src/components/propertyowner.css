@@ -6,7 +6,19 @@ body {
   ul{
     list-style-type: none;
   }
+  .c {
+    
+    width: 60%;
+    padding: 0;
+  }
 
+  .ct{
+    color: rgb(199, 196, 196);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  
+  }
   .card {
     
     
@@ -16,15 +28,17 @@ body {
   /*   margin-left: -50px; */
     transition: 0.4s ease-out;
     float: left;
+    ;
   
     margin-right: 2.5% !important;
     
     margin-bottom: 40px;
   } 
   .cpo{
-    left: 1.7% !important;
+    left: 2.4% !important;
+    
   }
- 
+
   
  
   

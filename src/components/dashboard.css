@@ -2,12 +2,18 @@ body {
     background-color: black;
 }
 .tbutton{
-    width: 48%;
-    height: 50px;
-    left: 3% !important;
-    margin-bottom: 10px;
-    margin-left: 1%;
+  width: 40%;
+  height: 50px;
+  left: 3% !important;
+  margin-bottom: 10px;
+  margin-left: 1%;
     
+  }
+
+  .cw{
+    padding: 0.5%;
+    color: rgb(255, 255, 255);
+    text-align: center; 
   }
 
   .ct{

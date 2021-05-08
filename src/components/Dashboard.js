@@ -171,7 +171,7 @@ class Dashboard extends React.Component {
     let vals = this.state.propertiesToShow;
 
     return (
-      <div>
+      <div class = "cw">
         <h1 class = "ll cn">Earth 3.0</h1>
         {this.state.redirect}
         {this.state.goToLeaderboard}
