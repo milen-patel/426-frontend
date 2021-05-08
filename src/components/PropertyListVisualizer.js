@@ -52,8 +52,8 @@ class PropertyListVisualizer extends React.Component {
           <h1 class = "tm">{e.name}</h1>
           <h5>Hourly Income: {e.hourlyIncome}</h5>
           <h5>Base Value: {e.value}</h5>
-          <h5>Level:{e.level} </h5>
-          <h5>Owners:</h5>
+          <h5>Level: {e.level} </h5>
+          <h5>Owners: </h5>
           <ul>
             <li>
               Tier 1:{" "}
