@@ -5,6 +5,7 @@ import { token } from "../token";
 import Map from "./Map";
 import PropertyListVisualizer from "./PropertyListVisualizer";
 import "./dashboard.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Responsible for rendering the dashboard shown to the user after authentication
 class Dashboard extends React.Component {
@@ -301,7 +302,7 @@ class Dashboard extends React.Component {
           >
             Sort by Level Descending
           </button>
-          
+          <div align = "center">
           <PropertyListVisualizer
             items={vals}
             balance={this.state.balance}
@@ -309,6 +310,7 @@ class Dashboard extends React.Component {
             key={this.state.propertiesToShow}
             id={vals}
           />
+          </div>
         </div>
       </div>
     );

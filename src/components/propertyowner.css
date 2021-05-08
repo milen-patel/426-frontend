@@ -9,17 +9,19 @@ body {
 
   .card {
     
-    height: 400px !important;
-    width: 30% !important;
-    background-color: #17141d;
+    
+    background-color: #502b9b;
     border-radius: 7%;
     display: flex;
   /*   margin-left: -50px; */
     transition: 0.4s ease-out;
     float: left;
-    left: 2% !important;
+  
     margin-right: 2.5% !important;
-  }
+    left: 2%;
+    margin-bottom: 40px;
+  } 
+ 
   
  
   

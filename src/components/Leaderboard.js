@@ -3,6 +3,7 @@ import React from "react";
 import { token } from "../token";
 import { Redirect } from "react-router-dom";
 import "./leaderboard.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Responsible for showing the leaderboard of the top 10 players, ranked by lifetime earnings
 class Leaderboard extends React.Component {
