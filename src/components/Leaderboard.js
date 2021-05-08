@@ -88,7 +88,7 @@ class Leaderboard extends React.Component {
           Account View
         </button>
         <hr />
-        <h1 className="ct">Leaderboard</h1>
+        <h1 className="lt">Leaderboard</h1>
         <ol className="list">
           {this.state.people
             ? this.state.people.map((p) => {

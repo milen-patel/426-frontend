@@ -20,6 +20,9 @@ body {
     
   
   }
+  .tm{
+    font-size: 3vw !important;
+  }
   .card {
     
     
@@ -32,12 +35,13 @@ body {
     ;
   
     margin-right: 2.5% !important;
-    
+    font-size: 1.4vw; 
     margin-bottom: 40px;
   } 
   .cpo{
     left: 2.4% !important;
-    height: 500px;
+    height: 400px !important;
+    font-size: 1.4vw; 
     
   }
 
@@ -55,10 +59,11 @@ body {
 
   .sbtn {
     width: auto;
-    height: 15px;
-    font-size: 10px !important;
+    height: 1.2vw;
+    font-size: 1.2vw !important;
     margin-left: 0%;
     line-height: 0px !important;
+    
     
 }
 .mg{

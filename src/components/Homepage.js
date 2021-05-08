@@ -46,7 +46,7 @@ class Homepage extends React.Component {
     }
     return (
       <div className="home im">
-        <h1 className="display-3 font">Earth 3.0</h1>
+        <h1 className="display-3 gameT">Earth 3.0</h1>
         <div>
           <h3 className="font">Scroll Down to See How to Play</h3>
         </div>
