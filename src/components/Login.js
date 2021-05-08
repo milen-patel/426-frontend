@@ -62,16 +62,16 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div class="im">
-        <div class="container">
-          <div class="row-md-5">
-            <div class="col-md-6 ">
-              <div class="c3">
+      <div className="im">
+        <div className="container">
+          <div className="row-md-5">
+            <div className="col-md-6 ">
+              <div className="c3">
                 {this.state.status}
                 {this.state.status ? <br /> : ""}
-                <form class="box">
+                <form className="box">
                   <h1>Login</h1>
-                  <p class="text-muted">
+                  <p className="text-muted">
                     {" "}
                     Please enter your Email and Password!
                   </p>
@@ -89,7 +89,7 @@ class Login extends React.Component {
                   <br />
                   <button
                     type="button"
-                    class="btn btn-outline-success btn-rounded"
+                    className="btn btn-outline-success btn-rounded"
                     data-mdb-ripple-color="dark"
                     onClick={this.onLogin}
                   >

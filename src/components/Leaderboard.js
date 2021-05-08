@@ -66,11 +66,11 @@ class Leaderboard extends React.Component {
     }
 
     return (
-      <div class = "pad">
+      <div className="pad">
         <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
-          data-mdb-ripple-color="dark" 
+          className="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark"
           onClick={() => {
             this.setState(() => ({ redirectDashboard: true }));
           }}
@@ -79,8 +79,8 @@ class Leaderboard extends React.Component {
         </button>
         <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
-          data-mdb-ripple-color="dark" 
+          className="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark"
           onClick={() => {
             this.setState(() => ({ redirectAccountView: true }));
           }}
@@ -88,25 +88,24 @@ class Leaderboard extends React.Component {
           Account View
         </button>
         <hr />
-        <h1 class = "ct">Leaderboard</h1>
-        <ol class = "list">
+        <h1 className="ct">Leaderboard</h1>
+        <ol className="list">
           {this.state.people
             ? this.state.people.map((p) => {
-                return (
-                  <div class = 'card c2 ct'>
-                  <li class = "ct hc" key={p.name + p.experience}>
-                    <hr class = "hr50"/>
-                      <h3 class = "hc">{p.name}</h3>
-                      <br />
-                      <strong>Properties Owned:</strong> {p.numProperties}
-                      <br />
-                      <strong>Lifetime Earnings:</strong>{" "}
-                      {this.numberWithCommas(p.experience)}
-                      
+              return (
+                <div className='card c2 ct'>
+                  <li className="ct hc" key={p.name + p.experience}>
+                    <hr className="hr50" />
+                    <h3 className="hc">{p.name}</h3>
+                    <br />
+                    <strong>Properties Owned:</strong> {p.numProperties}
+                    <br />
+                    <strong>Lifetime Earnings:</strong>{" "}
+                    {this.numberWithCommas(p.experience)}
                   </li>
-                  </div>
-                );
-              })
+                </div>
+              );
+            })
             : "Loading..."}
         </ol>
       </div>

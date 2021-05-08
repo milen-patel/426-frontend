@@ -67,69 +67,49 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div class="im">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="c3">
-            {this.state.status}
-            {this.state.status ? <br /> : ""}
-            <form class="box eh">
-              <h1>Register</h1>
-              <p class="text-muted">
-                {" "}
+      <div className="im">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="c3">
+              {this.state.status}
+              {this.state.status ? <br /> : ""}
+              <form className="box eh">
+                <h1>Register</h1>
+                <p className="text-muted">
+                  {" "}
                 Please enter your Name, Email, and Password!
               </p>
-              <input
-                type="text"
-                placeholder="Name"
-                onChange={this.nameFieldChanged}
-              ></input>
-              <br />
-              <input
-                type="text"
-                placeholder="Email"
-                onChange={this.emailFieldChanged}
-              ></input>
-              <br/>
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={this.passwordFieldChanged}
-              ></input>
-              <br />
-              <button
-                type="button"
-                class="btn btn-outline-success btn-rounded"
-                data-mdb-ripple-color="dark"
-                onClick={this.onRegister}
-              >
-                Register
+                <input
+                  type="text"
+                  placeholder="Name"
+                  onChange={this.nameFieldChanged}
+                ></input>
+                <br />
+                <input
+                  type="text"
+                  placeholder="Email"
+                  onChange={this.emailFieldChanged}
+                ></input>
+                <br />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.passwordFieldChanged}
+                ></input>
+                <br />
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-rounded"
+                  data-mdb-ripple-color="dark"
+                  onClick={this.onRegister}
+                >
+                  Register
               </button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      /*
-      <div>
-        {this.state.status}
-        {this.state.status ? <br /> : ""}
-        Name:
-        <input type="text" onChange={this.nameFieldChanged}></input>
-        <br />
-        Email:
-        <input type="text" onChange={this.emailFieldChanged}></input>
-        <br />
-        Password:
-        <input type="password" onChange={this.passwordFieldChanged}></input>
-        <br />
-        Register:
-        <button type="button" onClick={this.onRegister}>
-          Register
-        </button>
-      </div>
-      */
-
     );
   }
 }

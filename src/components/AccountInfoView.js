@@ -179,114 +179,114 @@ class AccountInfoView extends React.Component {
     }
 
     return (
-      <div class = "ml back">
-        
+      <div className="ml back">
+
         <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
-          data-mdb-ripple-color="dark" 
+          className="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          data-mdb-ripple-color="dark"
           onClick={this.onRedirectRequest}>Go Back to Dashboard</button>
-         <button
+        <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbuttons"
+          className="btn btn-outline-dark btn-rounded ml mt tbuttons"
           data-mdb-ripple-color="dark"
           onClick={this.onLeaderboardRequest}>Go to Leaderboard</button>
         <hr />
         <div>
-        <h1 class = "ml">Account Information:</h1>
-        <ul>
-          <li>
-            <strong>Email: </strong>
-            {this.state.email}
-          </li>
-          <li>
-            <strong>Name: </strong>
-            {this.state.name}
-          </li>
-          <li>
-            <strong>Account Created On: </strong>
-            {this.state.created}
-          </li>
-          <li>
-            <strong>Balance: </strong>
-            {this.numberWithCommas(this.state.balance)}
-          </li>
-          <li>
-            <strong>Maximum Properties: </strong>
-            {this.state.maxProperties}
-          </li>
-          <li>
-            <strong>Total Earnings: </strong>
-            {this.numberWithCommas(this.state.experience)}
-          </li>
-          <li>
-            <strong>Multiplier: </strong>
-            {this.state.multiplier.toFixed(2)}
-          </li>
-          <li>
-            <strong>Latitude: </strong>
-            {this.state.location ? this.state.location[0] : ""}
-          </li>
-          <li>
-            <strong>Longitude: </strong>
-            {this.state.location ? this.state.location[1] : ""}
-          </li>
-          <li>
-            <strong>Number of Properties: </strong>
-            {this.state.numProperties}
-          </li>
-        </ul>
-        <hr />
-        <h1 class = "ml">Upgrades</h1>
-        <p class = "ml">
-          You can currently own up to {this.state.maxProperties} properties and
+          <h1 className="ml">Account Information:</h1>
+          <ul>
+            <li>
+              <strong>Email: </strong>
+              {this.state.email}
+            </li>
+            <li>
+              <strong>Name: </strong>
+              {this.state.name}
+            </li>
+            <li>
+              <strong>Account Created On: </strong>
+              {this.state.created}
+            </li>
+            <li>
+              <strong>Balance: </strong>
+              {this.numberWithCommas(this.state.balance)}
+            </li>
+            <li>
+              <strong>Maximum Properties: </strong>
+              {this.state.maxProperties}
+            </li>
+            <li>
+              <strong>Total Earnings: </strong>
+              {this.numberWithCommas(this.state.experience)}
+            </li>
+            <li>
+              <strong>Multiplier: </strong>
+              {this.state.multiplier.toFixed(2)}
+            </li>
+            <li>
+              <strong>Latitude: </strong>
+              {this.state.location ? this.state.location[0] : ""}
+            </li>
+            <li>
+              <strong>Longitude: </strong>
+              {this.state.location ? this.state.location[1] : ""}
+            </li>
+            <li>
+              <strong>Number of Properties: </strong>
+              {this.state.numProperties}
+            </li>
+          </ul>
+          <hr />
+          <h1 className="ml">Upgrades</h1>
+          <p className="ml">
+            You can currently own up to {this.state.maxProperties} properties and
           you currently own {this.state.numProperties}. You can upgrade to{" "}
-          {2 * this.state.maxProperties} slots for{" "}
-          {this.numberWithCommas(this.state.maxProperties ** 3)}
-        </p>
-        {this.state.balance >= this.state.maxProperties ** 3 ? (
-          <button
-          type="button"
-          class="btn btn-outline-success btn-rounded ml ms mbuttons"
-          data-mdb-ripple-color="dark"
-          onClick={this.onUpgrade}>Upgrade</button>
-        ) : (
-          <button
-            type="button"
-            class="btn btn-outline-danger btn-rounded ml ms mbuttons"
-            data-mdb-ripple-color="dark">Not Enough funds!</button>
-        )}
-        <p class = "ml">
-          Your income multiplier is currently {this.state.multiplier.toFixed(2)}
+            {2 * this.state.maxProperties} slots for{" "}
+            {this.numberWithCommas(this.state.maxProperties ** 3)}
+          </p>
+          {this.state.balance >= this.state.maxProperties ** 3 ? (
+            <button
+              type="button"
+              className="btn btn-outline-success btn-rounded ml ms mbuttons"
+              data-mdb-ripple-color="dark"
+              onClick={this.onUpgrade}>Upgrade</button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-outline-danger btn-rounded ml ms mbuttons"
+              data-mdb-ripple-color="dark">Not Enough funds!</button>
+          )}
+          <p className="ml">
+            Your income multiplier is currently {this.state.multiplier.toFixed(2)}
           . You can upgrade to {(this.state.multiplier + 0.01).toFixed(2)} for
           $1,000,000
         </p>
-        {this.state.balance >= 1000000 ? (
-          <button
-          type="button"
-          class="btn btn-outline-success btn-rounded ml ms mbuttons"
-          data-mdb-ripple-color="dark"
-          onClick={this.onUpgradeMultiplier}>Upgrade</button>
-        ) : (
-          <button
-            type="button"
-            class="btn btn-outline-danger btn-rounded ml ms mbuttons"
-            data-mdb-ripple-color="dark">Not Enough Funds!</button>
-        )}
-        <hr />
+          {this.state.balance >= 1000000 ? (
+            <button
+              type="button"
+              className="btn btn-outline-success btn-rounded ml ms mbuttons"
+              data-mdb-ripple-color="dark"
+              onClick={this.onUpgradeMultiplier}>Upgrade</button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-outline-danger btn-rounded ml ms mbuttons"
+              data-mdb-ripple-color="dark">Not Enough Funds!</button>
+          )}
+          <hr />
         </div>
-        <h1 class = "ml">Your Properties:</h1>
-        <div class = "wrapper">
+        <h1 className="ml">Your Properties:</h1>
+        <div className="wrapper">
 
-        <PropertyOwnershipList
-          items={this.state.properties}
-          email={this.state.email}
-          onSell={this.onSell.bind(this)}
-        />
-        
-        
+          <PropertyOwnershipList
+            items={this.state.properties}
+            email={this.state.email}
+            onSell={this.onSell.bind(this)}
+          />
+
+
         </div>
-        
+
       </div>
     );
   }

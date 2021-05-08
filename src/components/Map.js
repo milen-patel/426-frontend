@@ -56,19 +56,19 @@ class Map extends React.Component {
     walkOffer = (
       <div>
         <hr />
-        <strong class = "ll">Latitude: {this.state.walkLat}</strong>
-        <strong class = "ll">Longitude: 
+        <strong className="ll">Latitude: {this.state.walkLat}</strong>
+        <strong className="ll">Longitude:
         {this.state.walkLon}
-        {this.state.address ? <p>Address: {this.state.address}</p> : ""}
+          {this.state.address ? <p>Address: {this.state.address}</p> : ""}
         </strong>
         <br />
-        <strong class = "ll">Cost: ${this.state.walkCost}</strong>
+        <strong className="ll">Cost: ${this.state.walkCost}</strong>
         <br />
         {this.props.userBalance > this.state.walkCost ? (
-           <button
-           type="button"
-           class="btn btn-outline-success btn-rounded mbtn"
-           data-mdb-ripple-color="dark"
+          <button
+            type="button"
+            className="btn btn-outline-success btn-rounded mbtn"
+            data-mdb-ripple-color="dark"
             onClick={async () => {
               // Only call API if they are moving to a new location
               if (this.state.walkCost === 0) {
@@ -90,9 +90,9 @@ class Map extends React.Component {
           </button>
         ) : (
           <button
-          type="button"
-          class="btn btn-outline-danger btn-rounded mbtn"
-          data-mdb-ripple-color="dark">Insufficient Funds</button>
+            type="button"
+            className="btn btn-outline-danger btn-rounded mbtn"
+            data-mdb-ripple-color="dark">Insufficient Funds</button>
         )}
         <hr />
       </div>
@@ -118,7 +118,7 @@ class Map extends React.Component {
       //<PropertyListVisualizer items={[this.state.hoverInfo]} handler={this.props.focusHandler} />
       //</div>);
       hoverVisuals = (
-        <div class = "locInfo">
+        <div className = "locInfo">
           <h3>{this.state.hoverInfo.name}</h3>
           <h5>Value: {this.state.hoverInfo.value}</h5>
           <h5>Income: {this.state.hoverInfo.hourlyIncome}</h5>

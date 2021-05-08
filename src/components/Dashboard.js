@@ -171,17 +171,17 @@ class Dashboard extends React.Component {
     let vals = this.state.propertiesToShow;
 
     return (
-      <div class = "cw">
+      <div className="cw">
         {this.state.redirect}
         {this.state.goToLeaderboard}
         <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+          className="btn btn-outline-dark btn-rounded ml mt tbutton"
+          data-mdb-ripple-color="dark"
           onClick={this.changePage}>Go to Account View</button>
         <button
           type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
+          className="btn btn-outline-dark btn-rounded ml mt tbutton"
           data-mdb-ripple-color="dark"
           onClick={() => {
             this.setState(() => ({
@@ -194,31 +194,31 @@ class Dashboard extends React.Component {
           Go to Leaderboard
         </button>
         <hr />
-        <p class = "cn">
-          <strong class = "ll cn">Balance:  {this.numberWithCommas(this.state.balance)}
+        <p className="cn">
+          <strong className="ll cn">Balance:  {this.numberWithCommas(this.state.balance)}
           </strong>
         </p>
-        <div class = "map ct">
-        <Map 
-          userLat={this.state.lat}
-          userLon={this.state.lon}
-          properties={this.state.propertiesToShow}
-          userBalance={this.state.balance}
-          moveHandler={this.makeMove.bind(this)}
-          focusHandler={this.makePurchase.bind(this)}
-        />
+        <div className="map ct">
+          <Map
+            userLat={this.state.lat}
+            userLon={this.state.lon}
+            properties={this.state.propertiesToShow}
+            userBalance={this.state.balance}
+            moveHandler={this.makeMove.bind(this)}
+            focusHandler={this.makePurchase.bind(this)}
+          />
         </div>
         <div>
           <hr />
-          <h3 class = "ct">
+          <h3 className="ct">
             {this.state.propertiesToShow
               ? `Showing ${this.state.propertiesToShow.length} properties`
               : "Showing no properties"}
           </h3>
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton "
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton "
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -230,9 +230,9 @@ class Dashboard extends React.Component {
             Sort by Value Ascending
           </button>
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton"
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -245,9 +245,9 @@ class Dashboard extends React.Component {
           </button>
           <br />
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton"
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -259,9 +259,9 @@ class Dashboard extends React.Component {
             Sort by Income Ascending
           </button>
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton"
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -274,9 +274,9 @@ class Dashboard extends React.Component {
           </button>
           <br />
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton"
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -288,9 +288,9 @@ class Dashboard extends React.Component {
             Sort by Level Ascending
           </button>
           <button
-          type="button"
-          class="btn btn-outline-dark btn-rounded ml mt tbutton"
-          data-mdb-ripple-color="dark" 
+            type="button"
+            className="btn btn-outline-dark btn-rounded ml mt tbutton"
+            data-mdb-ripple-color="dark"
             onClick={() => {
               this.setState((prevState) => ({
                 propertiesToShow: prevState.propertiesToShow.sort((a, b) => {
@@ -301,14 +301,14 @@ class Dashboard extends React.Component {
           >
             Sort by Level Descending
           </button>
-          <div align = "center">
-          <PropertyListVisualizer
-            items={vals}
-            balance={this.state.balance}
-            handler={this.makePurchase.bind(this)}
-            key={this.state.propertiesToShow}
-            id={vals}
-          />
+          <div align="center">
+            <PropertyListVisualizer
+              items={vals}
+              balance={this.state.balance}
+              handler={this.makePurchase.bind(this)}
+              key={this.state.propertiesToShow}
+              id={vals}
+            />
           </div>
         </div>
       </div>
