@@ -1,6 +1,24 @@
+/* To use gif instead: https://stackoverflow.com/questions/21590343/how-to-display-a-gif-fullscreen-for-a-webpage-background/21590382 */
 body {
-   background-color: #191919;
+    background-color: #191919;
+    background: linear-gradient(-45deg, #3d4c6b, #c8cbdd, #48626b, #a7bdb8);
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 video {
     object-fit: cover;
     width: 100vw;
@@ -9,8 +27,6 @@ video {
     top: 0;
     left: 0;
   }
-
-
 
 
 .center {

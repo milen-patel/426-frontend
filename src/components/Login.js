@@ -62,14 +62,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <video
-          src="https://www.youtube.com/embed/_Sl8diqCAFw"
-          autoPlay
-          loop
-          playsInline
-          muted
-        ></video>
+      <div id="wrapperVid">
         <div class="container">
           <div class="row-md-5">
             <div class="col-md-6 ">
