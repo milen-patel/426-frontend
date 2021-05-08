@@ -18,9 +18,12 @@ body {
     float: left;
   
     margin-right: 2.5% !important;
-    left: 2%;
+    
     margin-bottom: 40px;
   } 
+  .cpo{
+    left: 1.7% !important;
+  }
  
   
  
@@ -33,12 +36,7 @@ body {
 
   
 
-  .ct{
-    color: rgb(199, 196, 196);
-    margin-left: auto;
-    margin-right: auto
-  
-  }
+
 
   .sbtn {
     width: auto;

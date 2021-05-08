@@ -13,7 +13,7 @@ function PropertyOwnershipList(props) {
   processed = props.items.map((e) => {
     return (
       
-    <div class="card" key = {e._id}>
+    <div class="card cpo" key = {e._id}>
     <h1 class = "ct tm">{e.name}</h1>
     <h7 class = "ct">Hourly Income: {e.hourlyIncome}</h7>
         <h7 class = "ct">Base Value: {e.value}</h7>
