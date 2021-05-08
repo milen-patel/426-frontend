@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Earth3-Frontend/static/css/main.4878add1.chunk.css",
-    "main.js": "/Earth3-Frontend/static/js/main.97c1d3ff.chunk.js",
-    "main.js.map": "/Earth3-Frontend/static/js/main.97c1d3ff.chunk.js.map",
+    "main.css": "/Earth3-Frontend/static/css/main.91219495.chunk.css",
+    "main.js": "/Earth3-Frontend/static/js/main.8020c6cc.chunk.js",
+    "main.js.map": "/Earth3-Frontend/static/js/main.8020c6cc.chunk.js.map",
     "runtime-main.js": "/Earth3-Frontend/static/js/runtime-main.b3ae8dc8.js",
     "runtime-main.js.map": "/Earth3-Frontend/static/js/runtime-main.b3ae8dc8.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/Earth3-Frontend/static/css/2.4c97ca4f.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.499acc41.chunk.js.map": "/Earth3-Frontend/static/js/3.499acc41.chunk.js.map",
     "index.html": "/Earth3-Frontend/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/Earth3-Frontend/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.4878add1.chunk.css.map": "/Earth3-Frontend/static/css/main.4878add1.chunk.css.map",
+    "static/css/main.91219495.chunk.css.map": "/Earth3-Frontend/static/css/main.91219495.chunk.css.map",
     "static/js/2.970b659f.chunk.js.LICENSE.txt": "/Earth3-Frontend/static/js/2.970b659f.chunk.js.LICENSE.txt",
     "static/media/MapMarkerIcon.fb4229c5.png": "/Earth3-Frontend/static/media/MapMarkerIcon.fb4229c5.png",
     "static/media/UserOnMapIcon.3e0031bf.png": "/Earth3-Frontend/static/media/UserOnMapIcon.3e0031bf.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.b3ae8dc8.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.970b659f.chunk.js",
-    "static/css/main.4878add1.chunk.css",
-    "static/js/main.97c1d3ff.chunk.js"
+    "static/css/main.91219495.chunk.css",
+    "static/js/main.8020c6cc.chunk.js"
   ]
 }
