@@ -54,16 +54,16 @@ body {
 .nebtn{
     width: auto;
     height: 17px;
-    font-size: 1.4vw !important;
+    font-size: 1vw !important;
     margin-left: 3%;
     line-height: 0px !important;
-    font-size: 1.4vw; 
+    
 }
 
 .pbtn{
     width: auto;
     height: 17px;
-    font-size: 1.4vw!important; 
+    font-size: 1vw!important; 
     margin-left: 3%;
     line-height: 0px !important;
     

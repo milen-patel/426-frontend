@@ -21,7 +21,7 @@ class PropertyListVisualizer extends React.Component {
           this.props.handler(id, tier);
         }}
       >
-        Purchase for {`${this.numberWithCommas(cost)}`}
+        {`${this.numberWithCommas(cost)}`}
       </button>
     );
   }
